@@ -27,6 +27,8 @@ class Conway(App):
         for cw in self.getSpritesbyClass(Cubey):
             cw.step()
 
+[0] * 10
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 myapp = Conway()
 myapp.run()
