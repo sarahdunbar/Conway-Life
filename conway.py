@@ -9,7 +9,7 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
 
-"""
+
 class Cubey(Sprite):
     def __init__(self, position):
 
@@ -27,7 +27,8 @@ class Conway(App):
     def step(self):
         for cw in self.getSpritesbyClass(Cubey):
             cw.step()
-"""
+
+
 
 norm = Color(0x872657, 1.0)
 repline = LineStyle (1, norm)
