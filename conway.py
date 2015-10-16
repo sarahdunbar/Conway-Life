@@ -36,7 +36,7 @@ for x in range(21):
     j = 1
     for y in range(21):
         Sprite(deadark, (5*x, 5*y))
-for x in range(22, 43):
+for x in range(21, 42):
     j = 1
     for y in range(21):
         Sprite(deadark, (5*x, 5*y))
