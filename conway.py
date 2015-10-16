@@ -32,10 +32,15 @@ class Conway(App):
 norm = Color(0x872657, 1.0)
 repline = LineStyle (1, norm)
 deadark = RectangleAsset(5, 5, repline, norm)
-for x in range(100):
+for x in range(21):
     j = 1
-    for y in range(100):
+    for y in range(21):
         Sprite(deadark, (5*x, 5*y))
+for x in range(22, 43):
+    j = 1
+    for y in range(21):
+        Sprite(deadark, (5*x, 5*y))
+
 
 myapp = App()
 myapp.run()
