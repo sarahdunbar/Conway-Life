@@ -9,6 +9,7 @@ https://github.com/HHS-IntroProgramming/Conway-Life
 
 from ggame import App, RectangleAsset, ImageAsset, Sprite, LineStyle, Color, Frame
 
+"""
 class Cubey(Sprite):
     def __init__(self, position):
 
@@ -26,9 +27,15 @@ class Conway(App):
     def step(self):
         for cw in self.getSpritesbyClass(Cubey):
             cw.step()
+"""
 
-[0] * 10
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+norm = Color(0x872657, 1.0)
+repline = LineStyle (1, norm)
+deadark = RectangleAsset(5, 5, repline, norm)
+for x in range(10):
+    j = 1
+    for y in range(10):
+        Sprite(deadark, (5*x, 5*y)
 
 myapp = Conway()
 myapp.run()
