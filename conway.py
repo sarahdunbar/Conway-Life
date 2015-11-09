@@ -16,6 +16,12 @@ myapp = App()
 myapp.run()
 
 """
+def Gender (gender):
+    if gender = "male":
+        pronoun = "he"
+        hisher = "his"
+        hishers = "his"
+        himher = "him"
 
 print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The mages, so eager to fight when the war" +
 " had first begun in 148, have largely been wiped out. Now, both the Miorians and Ethrians have turned to " + 
@@ -53,8 +59,8 @@ while g == 0:
         print ("That will do. Now, time to become yourself.")
         g = 1
 print (" ")
-
-
+print (name + "will have 50 attribute points to spend on ten categories: ")
+print ("Bravery, " + name + "'s 
 
 
 
