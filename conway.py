@@ -17,11 +17,15 @@ myapp.run()
 
 """
 def Gender (gender):
-    if gender = "male":
-        pronoun = "he"
-        hisher = "his"
-        hishers = "his"
-        himher = "him"
+    if gender == "male":
+        print ("A male, I see. Good, good. ")
+        sprite1 == 1
+    if gender = "female":
+        print ("A female, I see. Good, good. ")
+        sprite1 = 2
+    else: 
+        print ("Sorry, I didn't catch that. Oh well, gender doesn't matter that much anyways. ")
+        sprite1 = 3
 
 print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The mages, so eager to fight when the war" +
 " had first begun in 148, have largely been wiped out. Now, both the Miorians and Ethrians have turned to " + 
@@ -43,6 +47,8 @@ print (" ")
 name = input ("Please select a name: ")
 age = input (name + ", how old are you? ")
 age = int (age)
+gender = input ("And... are you a boy or a girl? Type *male* for male and *female* for female. ")
+gender = Gender(gender)
 print (" ")
 g = 0
 while g == 0:
@@ -60,13 +66,4 @@ while g == 0:
         g = 1
 print (" ")
 print (name + "will have 50 attribute points to spend on ten categories: ")
-print ("Bravery, " + name + "'s 
-
-
-
-
-
-
-
-
-
+print ("Bravery, " + name + "'s
