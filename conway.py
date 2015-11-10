@@ -20,12 +20,12 @@ def Gender (gender):
     if gender == "male":
         print ("A male, I see. Good, good. ")
         sprite1 == 1
-    if gender = "female":
+    if gender == "female":
         print ("A female, I see. Good, good. ")
-        sprite1 = 2
+        sprite1 == 2
     else: 
         print ("Sorry, I didn't catch that. Oh well, gender doesn't matter that much anyways. ")
-        sprite1 = 3
+        sprite1 == 3
 
 print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The mages, so eager to fight when the war" +
 " had first begun in 148, have largely been wiped out. Now, both the Miorians and Ethrians have turned to " + 
