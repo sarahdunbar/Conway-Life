@@ -16,7 +16,7 @@ myapp = App()
 myapp.run()
 
 """
-def Gender (gender):
+def Gender (gender, sprite1):
     if gender == "male":
         print ("A male, I see. Good, good. ")
         sprite1 == 1
@@ -27,6 +27,7 @@ def Gender (gender):
         print ("Sorry, I didn't catch that. Oh well, gender doesn't matter that much anyways. ")
         sprite1 == 3
 
+sprite1 = 0
 print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The mages, so eager to fight when the war" +
 " had first begun in 148, have largely been wiped out. Now, both the Miorians and Ethrians have turned to " + 
 "magical children as young as six years old to aid in their efforts. Drafting is not voluntary.")
@@ -47,9 +48,6 @@ print (" ")
 name = input ("Please select a name: ")
 age = input (name + ", how old are you? ")
 age = int (age)
-gender = input ("And... are you a boy or a girl? Type *male* for male and *female* for female. ")
-gender = Gender(gender)
-print (" ")
 g = 0
 while g == 0:
     if age < 6:
@@ -65,5 +63,7 @@ while g == 0:
         print ("That will do. Now, time to become yourself.")
         g = 1
 print (" ")
-print (name + "will have 50 attribute points to spend on ten categories: ")
-print ("Bravery, " + name + "'s
+gender = input ("And... are you a boy or a girl? Type *male* for male and *female* for female. ")
+gender = Gender(gender, sprite1)
+print (" ")
+print (name + " will have 50 attribute points to spend on ten categories: ")
