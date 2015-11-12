@@ -67,3 +67,17 @@ gender = input ("And... are you a boy or a girl? Type *male* for male and *femal
 gender = Gender(gender, sprite1)
 print (" ")
 print (name + " will have 50 attribute points to spend on ten categories: ")
+print ("Bravery, the ability to act in a situation. ")
+print ("Tenacity, the ability to withstand pain. ")
+print ("Wisdom, the ability to acquire and recall knowledge. ")
+print ("Cleverness, the ability to solve problems quickly. ")
+print ("Wit and charm, the ability to make friends and be liked. ")
+print ("Luck, a natural gift not quite described. ")
+print ("Beguiling, the ability to gather friends and change minds. ")
+print ("Ambition, the drive to excel and go beyond. ")
+print ("Beauty, your natural appearance and charm. ")
+print ("Resourcefulness, your ability to find things and think outside the box. ")
+print (" ")
+list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+brave = input("Bravery, out of ten: ")
+
