@@ -16,16 +16,6 @@ myapp = App()
 myapp.run()
 
 """
-def Gender (gender, sprite1):
-    if gender == "male":
-        print ("A male, I see. Good, good. ")
-        sprite1 == 1
-    if gender == "female":
-        print ("A female, I see. Good, good. ")
-        sprite1 == 2
-    else: 
-        print ("Sorry, I didn't catch that. Oh well, gender doesn't matter that much anyways. ")
-        sprite1 == 3
 
 sprite1 = 0
 print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The mages, so eager to fight when the war" +
@@ -63,21 +53,50 @@ while g == 0:
         print ("That will do. Now, time to become yourself.")
         g = 1
 print (" ")
-gender = input ("And... are you a boy or a girl? Type *male* for male and *female* for female. ")
-gender = Gender(gender, sprite1)
+print ("You will have 50 attribute points to spend on ten categories: ")
+list3 = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Wit", "Luck", "Beguiling", "Ambition", "Beauty", "Optimism"]
+for i in list3:
+    print (i)
 print (" ")
-print (name + " will have 50 attribute points to spend on ten categories: ")
-print ("Bravery, the ability to act in a situation. ")
-print ("Tenacity, the ability to withstand pain. ")
-print ("Wisdom, the ability to acquire and recall knowledge. ")
-print ("Cleverness, the ability to solve problems quickly. ")
-print ("Wit and charm, the ability to make friends and be liked. ")
-print ("Luck, a natural gift not quite described. ")
-print ("Beguiling, the ability to gather friends and change minds. ")
-print ("Ambition, the drive to excel and go beyond. ")
-print ("Beauty, your natural appearance and charm. ")
-print ("Resourcefulness, your ability to find things and think outside the box. ")
-print (" ")
+#brave = 0
+#ten = 0
+#wis = 0
+#clev = 0
+#wit = 0
+#luck = 0
+#beg = 0
+#amb = 0
+#bea = 0
+#opt = 0
+num = 50
 list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-brave = input("Bravery, out of ten: ")
+list2 = ["Bravery is the ability to act in a situation. ", "Tenacity is the ability to withstand pain. ", "Wisdom is the ability to acquire and recall knowledge, as well as the knowledge of when to use it. ", "Cleverness is the ability to solve problems quickly. ", "Wit is the ability to make friends and be liked. ", "Luck is a natural gift not quite described. ", "Beguiling is the ability to change minds. ", "Ambition is the drive to excel and go beyond. ", "Beauty is a natural appearance and charm. ", "Optimism is the ability to see the best in a bad situation. "]
+#list2 = [brave, ten, wis, clev, wit, luck, beg, amb, bea, opt]
+for x in range (0, 10):
+    desc = list2[x]
+    print (desc)
+    namre = list3[x]
+    e = 0
+    while e == 0:
+        g = 0
+        while g == 0:
+            ent = input (namre + ", out of ten. ")
+            ent = int(ent)
+            if ent < 0 or ent > 10:
+                print ("Don't be a novelty. Between zero and ten, please. ")
+            else: 
+                g = 1
+        print (namre + " total: " + str(ent))
+        num = num - ent
+        if num < 0:
+            print ("Oh dear, you don't have enough energy points for that! Please select again! ")
+            print (" ")
+            num = num + ent
+        else:
+            e = 1
+    print ("Points left: " + str(num))
+    list1[x] = ent
+    print (" ")
+        
+
 
