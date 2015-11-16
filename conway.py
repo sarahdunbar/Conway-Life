@@ -116,7 +116,11 @@ nums2 = [mgc, phys, con, hap, lik, lead, hero, spi, intel, beg]
 names = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 print ("Now, we will determine secondary statistics. ")
-for x in range (0, 9)
+print ("Secondary statistics have real impact in the game. They are determined by your primary statistics you have just entered, and are out of thirty. ")
+print ("Don't worry, all primary statistics are used once for all above categories. They are all equal! ")
+print ("The average score is 12.5. Most of your scores will end up being close to this. It's not possible to be negative!")
+print (" ")
+for x in range (0, 10):
     attr = att[x]
     varlist = nums2[x]
     major = varlist[0]
@@ -126,12 +130,21 @@ for x in range (0, 9)
     minname = list3[minor]
     negname = list3[neg]
     lvl = list1[major] + list1[major] + list1[minor] - (list1[neg])/2
+    if lvl < 0:
+        lvl = 0
     print (attr + ": Two times " + majname + " plus " + minname + " minus one half " + negname)
     print (attr + ": " + str(lvl))
     values[x] = lvl
     namer = input("Type anything to continue. ")
     names[x] = namer
     print (" ")
-    
+val2 = values.sort()
+max = val2[9]
+sec = val2[8]
+loc1 = values.index(max)
+loc2 = values.index(sec)
+maxstat = att[loc1]
+secstat = att[loc2]
+print (maxstat, secstat)
 
 
