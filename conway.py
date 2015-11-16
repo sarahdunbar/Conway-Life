@@ -146,5 +146,6 @@ loc2 = values.index(sec)
 maxstat = att[loc1]
 secstat = att[loc2]
 print (maxstat, secstat)
+#RUN
 
 
