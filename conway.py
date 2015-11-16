@@ -54,7 +54,7 @@ while g == 0:
         g = 1
 print (" ")
 print ("You will have 50 attribute points to spend on ten categories: ")
-list3 = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Wit", "Luck", "Beguiling", "Ambition", "Beauty", "Optimism"]
+list3 = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Wit", "Luck", "Manipulation", "Ambition", "Beauty", "Optimism"]
 for i in list3:
     print (i)
 print (" ")
@@ -70,7 +70,7 @@ print (" ")
 #opt = 0
 num = 50
 list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-list2 = ["Bravery is the ability to act in a situation. ", "Tenacity is the ability to withstand pain. ", "Wisdom is the ability to acquire and recall knowledge, as well as the knowledge of when to use it. ", "Cleverness is the ability to solve problems quickly. ", "Wit is the ability to make friends and be liked. ", "Luck is a natural gift not quite described. ", "Beguiling is the ability to change minds. ", "Ambition is the drive to excel and go beyond. ", "Beauty is a natural appearance and charm. ", "Optimism is the ability to see the best in a bad situation. "]
+list2 = ["Bravery is the ability to act in a situation. ", "Tenacity is the ability to withstand pain. ", "Wisdom is the ability to acquire and recall knowledge, as well as the knowledge of when to use it. ", "Cleverness is the ability to solve problems quickly. ", "Wit is the ability to make friends and be liked. ", "Luck is a natural gift not quite described. ", "Manipulation is the ability to change minds in ways less honorable. ", "Ambition is the drive to excel and go beyond. ", "Beauty is a natural appearance and charm. ", "Optimism is the ability to see the best in a bad situation. "]
 for x in range (0, 10):
     desc = list2[x]
     print (desc)
@@ -101,24 +101,37 @@ if num > 0:
     print ("Cleverness: 0")
     list1[3] = 0
     print (" ")
-pwr = list1[5] + list1[5] + list1[7] - (list1[2])/2
-print ("Your power level will be determined by the following: Level of ambition plus twice the level of luck minus half the level of wisdom. ")
-print ("Power level: " + str(pwr))
-print (" ")
-if pwr <= 5:
-    print ("Oh dear, you really aren't very powerful at all. Well, you'll manage... I hope. ")
-if pwr >= 5 and pwr <= 10:
-    print ("Well, you're not that powerful. But look on the bright side! ")
-    if list1[9] < 5:
-        print ("... well, maybe that doesn't apply to pessimists like yourself, but still... ")
-if pwr > 10 and pwr < 15:
-    print ("Average. Don't feel bad. ")
-if pwr >= 15 and pwr < 20:
-    print ("Alright, I'd turn the other way if I see you in the streets... go get 'em! ")
-if pwr >= 20 and pwr < 30:
-    print ("Don't hurt me! Please! ")
-if pwr == 30:
-    print ("RUN! RUN! EVERYBODY RUN! AAAAAAAHHHH!!!!")
-print (" ")
+mgc = [5, 7, 2]
+phys = [1, 5, 3]
+con = [6, 8, 2]
+hap = [9, 4, 7]
+lik = [4, 0, 6]
+lead = [7, 6, 4]
+hero = [0, 1, 5]
+spi = [2, 9, 8]
+intel = [3, 2, 9]
+beg = [8, 3, 0]
+att = ["Magic", "Physical Fitness", "Connections in High Places", "Happiness", "Likeability", "Leadership", "Heroicness", "Spirituality", "Intelligence", "Beguiling"]
+nums2 = [mgc, phys, con, hap, lik, lead, hero, spi, intel, beg]
+names = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+print ("Now, we will determine secondary statistics. ")
+for x in range (0, 9)
+    attr = att[x]
+    varlist = nums2[x]
+    major = varlist[0]
+    minor = varlist[1]
+    neg = varlist[2]
+    majname = list3[major]
+    minname = list3[minor]
+    negname = list3[neg]
+    lvl = list1[major] + list1[major] + list1[minor] - (list1[neg])/2
+    print (attr + ": Two times " + majname + " plus " + minname + " minus one half " + negname)
+    print (attr + ": " + str(lvl))
+    values[x] = lvl
+    namer = input("Type anything to continue. ")
+    names[x] = namer
+    print (" ")
+    
 
 
