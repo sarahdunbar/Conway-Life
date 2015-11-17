@@ -22,7 +22,7 @@ print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The 
 " had first begun in 148, have largely been wiped out. Now, both the Miorians and Ethrians have turned to " + 
 "magical children as young as six years old to aid in their efforts. Drafting is not voluntary.")
 print (" ")
-print ("In this story, you will be playing the part of a novice teleporter as they rise through the ranks of the Miorian Army. Although young, you are " +
+print ("In this story, you will be playing the part of a novice soldier as they rise through the ranks of the Miorian Army. Although young, you are " +
 "more than ready to fight and beat those dirty Ethrians back to where they belong. At least, you think you are.")
 print (" ")
 print (" ")
@@ -54,8 +54,8 @@ while g == 0:
         g = 1
 print (" ")
 print ("You will have 50 attribute points to spend on ten categories: ")
-list3 = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Wit", "Luck", "Manipulation", "Ambition", "Beauty", "Optimism"]
-for i in list3:
+namestat = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Wit", "Luck", "Manipulation", "Ambition", "Beauty", "Optimism"]
+for i in namestat:
     print (i)
 print (" ")
 #brave = 0
@@ -74,7 +74,7 @@ list2 = ["Bravery is the ability to act in a situation. ", "Tenacity is the abil
 for x in range (0, 10):
     desc = list2[x]
     print (desc)
-    namre = list3[x]
+    namre = namestat[x]
     e = 0
     while e == 0:
         g = 0
@@ -126,9 +126,9 @@ for x in range (0, 10):
     major = varlist[0]
     minor = varlist[1]
     neg = varlist[2]
-    majname = list3[major]
-    minname = list3[minor]
-    negname = list3[neg]
+    majname = namestat[major]
+    minname = namestat[minor]
+    negname = namestat[neg]
     lvl = list1[major] + list1[major] + list1[minor] - (list1[neg])/2
     if lvl < 0:
         lvl = 0
@@ -149,9 +149,91 @@ valuz.remove(sec)
 locmax = valuz.index(maxm) + 1
 maxstat = att[locmax]
 secstat = att[locsec]
-print ("Your dominant skill is " + maxstat ", followed by " + secstat ". These skills will serve you " +
-"well in the future. ")
-print ("Now, let us begin! ")
-    
-
-
+print ("Your dominant skill is " + maxstat + ", followed by " + secstat + ". These skills will serve you well in the future. ")
+i = input ("Now, let us begin! ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+mag = values[0]
+con = values[2]
+beg = values[9]
+i = 0
+r = 0
+if con < 10:
+    reas1 = "have few connections in high places, "
+    i = 1
+elif mag < 10:
+    reas1 = "have shown little magical prowess, "
+    i = 1
+elif beg < 10:
+    reas = "are about as persuasive as a rock, "
+    i = 1
+if i == 1:
+    print ("Because you " + reas + "you are forced to bunk in the lower quarters of the academy. " +
+    "As a result, you may not be immediately alerted to events. ")
+    bunk = 0
+elif con > 20:
+    reas = "have more than a few connections with the higher-ups"
+    r = 1
+elif mag > 20:
+    reas = "are one of the academy's top magical prospects"
+    r = 1
+elif beg > 20:
+    reas = "are ever so persuasive"
+    r = 1
+if r == 1:
+    print ("Because you " + reas + ", you are graciously invited into the highest tower of the academy. "
+    + "Such grandeur! Such knowledge! ")
+    bunk = 2
+if i == 0 and r == 0:
+    print ("Because you are a middling student, you bunk in an average room. Not bad for a newbie...")
+    if values[8] > 20 or values[5] > 20:
+        print ("...but at the same time you can't help but feel disappointed that you're not the headmaster's favorite. "
+        + "After all, how else will you make it here?")
+    bunk = 1
