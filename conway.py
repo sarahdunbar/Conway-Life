@@ -138,14 +138,20 @@ for x in range (0, 10):
     namer = input("Type anything to continue. ")
     names[x] = namer
     print (" ")
-val2 = values.sort()
-max = val2[9]
+valuez = values[:]
+val2 = valuez.sort()
+maxm = val2[9]
 sec = val2[8]
-loc1 = values.index(max)
-loc2 = values.index(sec)
-maxstat = att[loc1]
-secstat = att[loc2]
-print (maxstat, secstat)
-#RUN
+valuec = values[:]
+locsec = valuec.index(sec)
+valuz = valuec [:]
+valuz.remove(sec)
+locmax = valuz.index(maxm) + 1
+maxstat = att[locmax]
+secstat = att[locsec]
+print ("Your dominant skill is " + maxstat ", followed by " + secstat ". These skills will serve you " +
+"well in the future. ")
+print ("Now, let us begin! ")
+    
 
 
