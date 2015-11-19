@@ -18,24 +18,6 @@ myapp.run()
 """
 
 def Init():
-    sprite1 = 0
-    print ("By 207, the Miori-Ethrian war had reached new heights of hostility. The mages, so eager to fight when the war" +
-    " had first begun in 148, have largely been wiped out. Now, both the Miorians and Ethrians have turned to " + 
-    "magical children as young as six years old to aid in their efforts. Drafting is not voluntary.")
-    print (" ")
-    print ("In this story, you will be playing the part of a novice soldier as they rise through the ranks of the Miorian Army. Although young, you are " +
-    "more than ready to fight and beat those dirty Ethrians back to where they belong. At least, you think you are.")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
-    print (" ")
     name = input ("Please select a name: ")
     age = input (name + ", how old are you? ")
     age = int (age)
@@ -196,7 +178,20 @@ def Transition():
     print (" ")
     print (" ")
     
-def
+def Desc():
+    if room = 1:
+        print ("Courtyard Proper")
+        print ("You are standing outside a spindly tower with a stained glass door. Around you, "
+        + ("an endless sea of grass ripples in the wind. It is eerily green, almost neon in its brightness. " +
+        "Aside from overgrown paths east and west through the tresses, there is nothing for miles. ")
+    if room = 2:
+        print ("Sasha's Courtyard")
+        print ("You are standing in a flattened patch of grass known as Sasha's Courtyard. " +
+        "Around you, the green grass extends almost to your head. A path winds east through the jade ocean towards " +
+        "what looks like a tower.")
+    if room = 3:
+        print ("Small Ditch")
+        print ("The path leading 
 
 p = Init()
 r = SecStat()
