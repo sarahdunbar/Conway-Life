@@ -178,21 +178,71 @@ def Transition():
     print (" ")
     print (" ")
     
-def Desc():
-    if room = 1:
+def Desc(room):
+    if room == 1:
         print ("Courtyard Proper")
-        print ("You are standing outside a spindly tower with a stained glass door. Around you, "
+        print ("You are standing outside a spindly northern tower with a stained glass door. Around you, "
         + ("an endless sea of grass ripples in the wind. It is eerily green, almost neon in its brightness. " +
         "Aside from overgrown paths east and west through the tresses, there is nothing for miles. ")
-    if room = 2:
+    if room == 2:
         print ("Sasha's Courtyard")
         print ("You are standing in a flattened patch of grass known as Sasha's Courtyard. " +
         "Around you, the green grass extends almost to your head. A path winds east through the jade ocean towards " +
         "what looks like a tower.")
-    if room = 3:
+    if room == 3:
         print ("Small Ditch")
-        print ("The path leading 
+        print ("The path east leading to the small ditch you are standing in is overgrown with moss. There is a hole " +
+        "in the northern cave wall. Even in here, the grass is eerily green. ")
+    if room == 4:
+        print ("Crystal Cave")
+        print ("The passage takes you into a small cave adorned with rainbow crystals. Somehow, you think you "
+        + "have seen this place before... An abandoned mineshaft slopes east into blackness. Nailed beside it, a sign. "
+        + "ONLY FOR THE HEROIC")
+    if room == 5:
+        print ("Mineshaft"):
+        print ("As you walk along the rusted tracks, you get the increasing feeling that you're walking in a circle. "
+        + "But then, a light ahead!")
+    if room == 6:
+        print ("Atrium")
+        print ("You are standing in the dark castle room known as the atrium. The only light comes from the stained " +
+        "glass window of the southern door. Stairways wind up and down into blackness. ")
+    if room == 7:
+        print ("Billiard Room"):
+        print ("What was once the billiard room is now grey and filled with light. Stairs wind up and down the stone walls into blackness. ")
+    if room == 8:
+        print ("Basement")
+        print ("In here, it is so dark that you can't " + 
+        "see your feet in front of you. Even though there are no windows, this room is distinctly drafty. ")
+    if room == 9:
+        print ("Southern Corridor")
+        print ("Somehow, you have stumbled upon a hidden corridor leading out of the basement! The floor is "
+        + "distinctly earthy, and you fear that the loose dirt ceiling will collapse on your head at any minute.")
+    if room == 10:
+        print ("Erdgeschoss Grounds")
+        print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
+        "A crystalline lake stretches before you, the mountains reflected in pristine detail in the water. The "
+        "grassy tower seems a million miles away...")
+
+def Movement(room):
+    r1 = [0, 1, 0, 1, 0, 0]
+    r2 = [0, 1, 0, 0, 0, 0]
+    r3 = [1, 0, 0, 1, 0, 0]
+    r4 = [0, 1, 1, 0, 0, 0]
+    r5 = [0, 1, 0, 0, 0, 0]
+    r6 = [0, 0, 1, 0, 1, 1]
+    r7 = [0, 0, 0, 0, 1, 1]
+    r8 = [0, 0, 1, 0, 1, 0]
+    r9 = [0, 0, 1, 0, 0, 0]
+    r10 = [0, 0, 0, 0, 0, 0]
 
 p = Init()
 r = SecStat()
 t = Transition()
+print ("You have been here before. ")
+print ("You have eight turns. ")
+print ("Do not disappoint me. ")
+print (" ")
+print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down ")
+room = 1
+t = Desc(room)
+r = Movement(room)
