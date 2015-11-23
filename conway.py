@@ -113,6 +113,7 @@ def Init():
         print (" ")
     valuez = values[:]
     val2 = valuez.sort()
+    """
     maxm = val2[9]
     sec = val2[8]
     valuec = values[:]
@@ -124,6 +125,7 @@ def Init():
     secstat = att[locsec]
     print ("Your dominant skill is " + maxstat + ", followed by " + secstat + ". These skills will serve you well in the future. ")
     i = input ("Now, let us begin! ")
+    """
 
 def Transition():
     print (" ")
@@ -228,19 +230,19 @@ def MoveProc(move):
         if move == "n":
             dire = 0
             j = 1
-        if move == "e":
+        elif move == "e":
             dire = 1
             j = 1
-        if move == "s":
+        elif move == "s":
             dire = 2
             j = 1
-        if move == "w":
+        elif move == "w":
             dire = 3
             j = 1
-        if move == "u":
+        elif move == "u":
             dire = 4
             j = 1
-        if move == "d":
+        elif move == "d":
             dire = 5
             j = 1
         else: 
