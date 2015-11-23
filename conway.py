@@ -113,6 +113,7 @@ def Init():
         print (" ")
     valuez = values[:]
     val2 = valuez.sort()
+    return values
     """
     maxm = val2[9]
     sec = val2[8]
@@ -247,6 +248,8 @@ def MoveProc(move):
             j = 1
         else: 
             print ("Incorrect format")
+            print (" ")
+            move = input (": ")
     return dire
 
 def Movement(room, dire):
@@ -273,8 +276,9 @@ def Movement(room, dire):
         return room, pos
     
 room = 1
-p = Init()
+values = Init()
 t = Transition()
+print (values[3])
 print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
