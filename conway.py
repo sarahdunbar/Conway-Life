@@ -278,7 +278,6 @@ def Movement(room, dire):
 room = 1
 values = Init()
 t = Transition()
-print (values[3])
 print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
