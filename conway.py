@@ -182,7 +182,7 @@ def Desc(room):
     if room == 1:
         print ("Courtyard Proper")
         print ("You are standing outside a spindly northern tower with a stained glass door. Around you, "
-        + ("an endless sea of grass ripples in the wind. It is eerily green, almost neon in its brightness. " +
+        + "an endless sea of grass ripples in the wind. It is eerily green, almost neon in its brightness. " +
         "Aside from overgrown paths east and west through the tresses, there is nothing for miles. ")
     if room == 2:
         print ("Sasha's Courtyard")
@@ -199,7 +199,7 @@ def Desc(room):
         + "have seen this place before... An abandoned mineshaft slopes east into blackness. Nailed beside it, a sign. "
         + "ONLY FOR THE HEROIC")
     if room == 5:
-        print ("Mineshaft"):
+        print ("Mineshaft")
         print ("As you walk along the rusted tracks, you get the increasing feeling that you're walking in a circle. "
         + "But then, a light ahead!")
     if room == 6:
@@ -207,15 +207,15 @@ def Desc(room):
         print ("You are standing in the dark castle room known as the atrium. The only light comes from the stained " +
         "glass window of the southern door. Stairways wind up and down into blackness. ")
     if room == 7:
-        print ("Billiard Room"):
-        print ("What was once the billiard room is now grey and filled with light. Stairs wind up and down the stone walls into blackness. ")
+        print ("Billiard Room")
+        print ("What was once the billiard room is now grey and filled with light. Stairs wind down the stone walls into blackness. ")
     if room == 8:
         print ("Basement")
         print ("In here, it is so dark that you can't " + 
         "see your feet in front of you. Even though there are no windows, this room is distinctly drafty. ")
     if room == 9:
         print ("Southern Corridor")
-        print ("Somehow, you have stumbled upon a hidden corridor leading out of the basement! The floor is "
+        print ("Somehow, you have stumbled upon a hidden corridor! The floor is "
         + "distinctly earthy, and you fear that the loose dirt ceiling will collapse on your head at any minute.")
     if room == 10:
         print ("Erdgeschoss Grounds")
@@ -223,18 +223,44 @@ def Desc(room):
         "A crystalline lake stretches before you, the mountains reflected in pristine detail in the water. The "
         "grassy tower seems a million miles away...")
 
-def Movement(room):
-    r1 = [0, 1, 0, 1, 0, 0]
-    r2 = [0, 1, 0, 0, 0, 0]
-    r3 = [1, 0, 0, 1, 0, 0]
-    r4 = [0, 1, 1, 0, 0, 0]
-    r5 = [0, 1, 0, 0, 0, 0]
-    r6 = [0, 0, 1, 0, 1, 1]
-    r7 = [0, 0, 0, 0, 1, 1]
-    r8 = [0, 0, 1, 0, 1, 0]
-    r9 = [0, 0, 1, 0, 0, 0]
-    r10 = [0, 0, 0, 0, 0, 0]
+def MoveProc(move):
+    if move = "n":
+        dire = 0
+    if move = "e":
+        dire = 1
+    if move = "s":
+        dire = 2
+    if move = "w":
+        dire = 3
+    if move = "u":
+        dire = 4
+    if move = "d":
+        dire = 5
+    return dire
 
+def Movement(room, dire):
+    r1 = [6, 3, 0, 2, 0, 0]
+    r2 = [0, 1, 0, 0, 0, 0]
+    r3 = [4, 0, 0, 1, 0, 0]
+    r4 = [0, 5, 3, 0, 0, 0]
+    r5 = [0, 9, 0, 0, 0, 0]
+    r6 = [0, 0, 1, 0, 7, 8]
+    r7 = [0, 0, 0, 0, 0, 6]
+    r8 = [0, 0, 9, 0, 6, 0]
+    r9 = [0, 0, 10, 0, 0, 0]
+    r10 = [0, 0, 0, 0, 0, 0]
+    rlist = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10]
+    rnum = room - 1
+    roomlist = rlist[rnum]
+    pos = roomlist[dire]
+    if pos == 0:
+        print ("You cannot go in that direction! ")
+        return room
+    else:
+        room = pos
+        return room
+    
+room = 1
 p = Init()
 r = SecStat()
 t = Transition()
@@ -243,6 +269,12 @@ print ("You have eight turns. ")
 print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down ")
-room = 1
-t = Desc(room)
-r = Movement(room)
+while True:
+    move = input (": ")
+    dire = MoveProc(move)
+    t = Desc(room)
+    room2 = Movement(room, dire)
+    if room2 = room:
+        break
+    else:
+        t = Desc(room)
