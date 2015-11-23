@@ -74,8 +74,6 @@ def Init():
         print ("Cleverness: 0")
         list1[3] = 0
         print (" ")
-
-def SecStat():     
     mgc = [5, 7, 2]
     phys = [1, 5, 3]
     con = [6, 8, 2]
@@ -222,20 +220,31 @@ def Desc(room):
         print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
         "A crystalline lake stretches before you, the mountains reflected in pristine detail in the water. The "
         "grassy tower seems a million miles away...")
+    print (" ")
 
 def MoveProc(move):
-    if move = "n":
-        dire = 0
-    if move = "e":
-        dire = 1
-    if move = "s":
-        dire = 2
-    if move = "w":
-        dire = 3
-    if move = "u":
-        dire = 4
-    if move = "d":
-        dire = 5
+    j = 0
+    while j == 0:
+        if move == "n":
+            dire = 0
+            j = 1
+        if move == "e":
+            dire = 1
+            j = 1
+        if move == "s":
+            dire = 2
+            j = 1
+        if move == "w":
+            dire = 3
+            j = 1
+        if move == "u":
+            dire = 4
+            j = 1
+        if move == "d":
+            dire = 5
+            j = 1
+        else: 
+            print ("Incorrect format")
     return dire
 
 def Movement(room, dire):
@@ -255,26 +264,27 @@ def Movement(room, dire):
     pos = roomlist[dire]
     if pos == 0:
         print ("You cannot go in that direction! ")
-        return room
+        print (" ")
+        return room, pos
     else:
         room = pos
-        return room
+        return room, pos
     
 room = 1
 p = Init()
-r = SecStat()
 t = Transition()
 print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down ")
+print (" ")
+t = Desc(room)
 while True:
     move = input (": ")
     dire = MoveProc(move)
-    t = Desc(room)
-    room2 = Movement(room, dire)
-    if room2 = room:
-        break
+    room, pos = Movement(room, dire)
+    if pos == 0:
+        j = 3
     else:
         t = Desc(room)
