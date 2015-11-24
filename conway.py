@@ -223,7 +223,6 @@ def Desc(room):
         print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
         "A crystalline lake stretches before you, the mountains reflected in pristine detail in the water. The "
         "grassy tower seems a million miles away...")
-    print (" ")
 
 def MoveProc(move):
     j = 0
@@ -274,8 +273,38 @@ def Movement(room, dire):
     else:
         room = pos
         return room, pos
+        
+def inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+    ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
+    lizt = ["small wooden key", "gilded envelope"]
+    rnum = room
+    rlist = ret[rnum]
+    length = len(rlist)
+    wut = [""]*length
+    for i in range (0, length):
+        num = rlist[i]
+        if num == 0:
+            g = 3
+        if num == 1:
+            smi = lizt[i]
+            print ("There is a " + smi + " here. ")
+    print (" ")
+    return ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+    
+    
     
 room = 1
+rim = [1, 0]
+ri1 = [0, 0]
+ri2 = [0, 1]
+ri3 = [0, 0]
+ri4 = [0, 0]
+ri5 = [0, 0]
+ri6 = [0, 0]
+ri7 = [0, 0]
+ri8 = [0, 0]
+ri9 = [0, 0]
+ri10 = [0, 0]
 values = Init()
 t = Transition()
 print ("You have been here before. ")
@@ -293,3 +322,4 @@ while True:
         j = 3
     else:
         t = Desc(room)
+    ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
