@@ -223,6 +223,7 @@ def Desc(room):
         print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
         "A crystalline lake stretches before you, the mountains reflected in pristine detail in the water. The "
         "grassy tower seems a million miles away...")
+    print (" ")
 
 def MoveProc(move):
     j = 0
@@ -247,7 +248,6 @@ def MoveProc(move):
             j = 1
         else: 
             print ("Incorrect format")
-            print (" ")
             move = input (": ")
     return dire
 
@@ -268,7 +268,6 @@ def Movement(room, dire):
     pos = roomlist[dire]
     if pos == 0:
         print ("You cannot go in that direction! ")
-        print (" ")
         return room, pos
     else:
         room = pos
@@ -291,8 +290,19 @@ def inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
     print (" ")
     return ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     
-    
-    
+def selfinv(rim):
+    lizt = ["small wooden key", "gilded envelope"]
+    rib = len(rim)
+    for i in range (0, rib):
+        hal = rim[i]
+        if hal == 0:
+            g = 4
+        if hal == 1:
+            namee = lizt[i] 
+            print ("You are holding a " + namee + ". ")
+    print (" ")
+    return rim
+
 room = 1
 rim = [1, 0]
 ri1 = [0, 0]
@@ -316,10 +326,13 @@ print (" ")
 t = Desc(room)
 while True:
     move = input (": ")
-    dire = MoveProc(move)
-    room, pos = Movement(room, dire)
-    if pos == 0:
-        j = 3
-    else:
-        t = Desc(room)
-    ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+    if move == "n" or move == "s" or move == "e" or move == "w" or move == "u" or move == "d":
+        dire = MoveProc(move)
+        room, pos = Movement(room, dire)
+        if pos == 0:
+            j = 3
+        else:
+            t = Desc(room)
+        ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+    if move == "i":
+        rim = selfinv(rim)
