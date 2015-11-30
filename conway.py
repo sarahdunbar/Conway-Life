@@ -302,8 +302,13 @@ def selfinv(rim):
             print ("You are holding a " + namee + ". ")
     print (" ")
     return rim
+    
+def dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+    
 
 room = 1
+ret = []
+rim = []
 rim = [1, 0]
 ri1 = [0, 0]
 ri2 = [0, 1]
@@ -321,18 +326,32 @@ print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
 print (" ")
-print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down ")
+print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object")
 print (" ")
 t = Desc(room)
 while True:
     move = input (": ")
-    if move == "n" or move == "s" or move == "e" or move == "w" or move == "u" or move == "d":
-        dire = MoveProc(move)
+    movescript = move.split(" ")
+    movescript.append(" ")
+    ent1 = movescript[0]
+    if ent1 == "n" or ent1 == "s" or ent1 == "e" or ent1 == "w" or ent1 == "u" or ent1 == "d":
+        dire = MoveProc(ent1)
         room, pos = Movement(room, dire)
         if pos == 0:
             j = 3
         else:
             t = Desc(room)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
-    if move == "i":
+    if ent1 == "i":
         rim = selfinv(rim)
+    if ent1 == "l":
+        t = Desc(room)
+        ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+    if ent1 == "drop":
+        ent2 = movescript[1]
+        if ent2 == " ":
+            print ("Please be more specific. What would you like to drop? ")
+            print (" ")
+        else:
+            i = dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+            
