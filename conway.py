@@ -273,9 +273,8 @@ def Movement(room, dire):
         room = pos
         return room, pos
         
-def inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+def inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
     ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
-    lizt = ["small wooden key", "gilded envelope"]
     rnum = room
     rlist = ret[rnum]
     length = len(rlist)
@@ -290,8 +289,7 @@ def inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
     print (" ")
     return ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     
-def selfinv(rim):
-    lizt = ["small wooden key", "gilded envelope"]
+def selfinv(lizt, rim):
     rib = len(rim)
     for i in range (0, rib):
         hal = rim[i]
@@ -303,9 +301,8 @@ def selfinv(rim):
     print (" ")
     return rim
     
-def dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+def dropfunc(lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
     ent2 = movescript[1]
-    lizt = ["small wooden key", "gilded envelope"]
     if ent2 == "key" or ent2 == "envelope":
         g = 3
     if ent2 == "wooden" or ent2 == "gilded":
@@ -320,17 +317,21 @@ def dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9,
         if ent2 == "wooden" or ent2 == "key":
             obj = 0
             check = rim[0]
-        else:
+        if ent2 == "gilded" or ent2 == "envelope":
             obj = 1
             check = rim[1]
     if check == 0:
         print ("You are not holding that object! ")
-    else:
+        print (" ")
+        return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+    if check == 1:
         ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
         rlizzle = ret[room]
         rlizzle[obj] = 1
         namer = lizt[obj]
+        rim[obj] = 0
         print ("You are no longer holding a " + namer + ".")
+        print (" ")
         return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
 
@@ -356,6 +357,7 @@ print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object")
 print (" ")
+lizt = ["wooden key", "gilded envelope"]
 t = Desc(room)
 while True:
     move = input (": ")
@@ -371,16 +373,19 @@ while True:
         else:
             t = Desc(room)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
-    if ent1 == "i":
-        rim = selfinv(rim)
-    if ent1 == "l":
+    elif ent1 == "i":
+        rim = selfinv(lizt, rim)
+    elif ent1 == "l" or ent1 == "look":
+        print (" ")
         t = Desc(room)
-        ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
-    if ent1 == "drop":
+        ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+    elif ent1 == "drop":
         ent2 = movescript[1]
         if ent2 == " ":
             print ("Please be more specific. What would you like to drop? ")
             print (" ")
         else:
-            rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
-            
+            rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+    else:
+        print ("Invalid command. ")
+        print (" ")
