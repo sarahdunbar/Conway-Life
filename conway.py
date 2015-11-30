@@ -304,7 +304,35 @@ def selfinv(rim):
     return rim
     
 def dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
-    
+    ent2 = movescript[1]
+    lizt = ["small wooden key", "gilded envelope"]
+    if ent2 == "key" or ent2 == "envelope":
+        g = 3
+    if ent2 == "wooden" or ent2 == "gilded":
+        ent3 = movescript[2]
+        if ent3 == "key" or ent3 == "envelope":
+            g = 3
+        else:
+            print ("Drop command not understood. ")
+            print (" ")
+            return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+    if g == 3:
+        if ent2 == "wooden" or ent2 == "key":
+            obj = 0
+            check = rim[0]
+        else:
+            obj = 1
+            check = rim[1]
+    if check == 0:
+        print ("You are not holding that object! ")
+    else:
+        ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
+        rlizzle = ret[room]
+        rlizzle[obj] = 1
+        namer = lizt[obj]
+        print ("You are no longer holding a " + namer + ".")
+        return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        
 
 room = 1
 ret = []
@@ -331,6 +359,7 @@ print (" ")
 t = Desc(room)
 while True:
     move = input (": ")
+    move = move.lower()
     movescript = move.split(" ")
     movescript.append(" ")
     ent1 = movescript[0]
@@ -353,5 +382,5 @@ while True:
             print ("Please be more specific. What would you like to drop? ")
             print (" ")
         else:
-            i = dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+            rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
             
