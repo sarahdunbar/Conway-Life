@@ -223,7 +223,6 @@ def Desc(room):
         print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
         "A crystalline lake stretches before you, the mountains reflected in pristine detail in the water. The "
         "grassy tower seems a million miles away...")
-    print (" ")
 
 def MoveProc(move):
     j = 0
@@ -251,7 +250,7 @@ def MoveProc(move):
             move = input (": ")
     return dire
 
-def Movement(room, dire):
+def Movement(values, room, dire, turncounter):
     r1 = [6, 3, 0, 2, 0, 0]
     r2 = [0, 1, 0, 0, 0, 0]
     r3 = [4, 0, 0, 1, 0, 0]
@@ -268,10 +267,23 @@ def Movement(room, dire):
     pos = roomlist[dire]
     if pos == 0:
         print ("You cannot go in that direction! ")
-        return room, pos
+        turncounter = turncounter - 1
+        return room, pos, turncounter
     else:
+        if room == 4:
+            hero = values[6]
+            if hero < 15:
+                print (" ")
+                print ("You feel your legs shaking beneath you, and realize that being heroic simply isn't your strong suit. " +
+                "After all, what's the point of being the hero when you're dead?? ")
+                pos = 0
+                turncounter = turncounter - 1
+                return room, pos, turncounter
+            else:
+                print (" ")
+                print ("You puff up your chest and venture into the blackness. ")
         room = pos
-        return room, pos
+        return room, pos, turncounter
         
 def inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
     ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
@@ -301,7 +313,9 @@ def selfinv(lizt, rim):
     print (" ")
     return rim
     
-def dropfunc(lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+    ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
+    rlizzle = ret[room]
     ent2 = movescript[1]
     if ent2 == "key" or ent2 == "envelope":
         g = 3
@@ -310,32 +324,47 @@ def dropfunc(lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8
         if ent3 == "key" or ent3 == "envelope":
             g = 3
         else:
-            print ("Drop command not understood. ")
+            print ("Object to " + word + " not understood. ")
+            turncounter = turncounter - 1  
             print (" ")
-            return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     if g == 3:
         if ent2 == "wooden" or ent2 == "key":
             obj = 0
-            check = rim[0]
+            if jj == 1:
+                check = rim[0]
+            if jj == 2:
+                check = rlizzle[0]
         if ent2 == "gilded" or ent2 == "envelope":
             obj = 1
-            check = rim[1]
+            if jj == 1:
+                check = rim[1]
+            if jj == 2:
+                check = rlizzle[1]
     if check == 0:
-        print ("You are not holding that object! ")
+        if jj == 1:
+            print ("You are not holding that object! ")
+        if jj == 2:
+            print ("That object is not in this room! ")
         print (" ")
-        return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        turncounter = turncounter - 1  
+        return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     if check == 1:
-        ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
-        rlizzle = ret[room]
-        rlizzle[obj] = 1
         namer = lizt[obj]
-        rim[obj] = 0
-        print ("You are no longer holding a " + namer + ".")
+        if jj == 1:
+            rlizzle[obj] = 1
+            rim[obj] = 0
+            print ("You are no longer holding a " + namer + ".")
+        if jj == 2:
+            rim[obj] = 1
+            rlizzle[obj] = 0
+            print ("You have picked up the " + namer + ".")
         print (" ")
-        return rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
 
 room = 1
+turncounter = 0
 ret = []
 rim = []
 rim = [1, 0]
@@ -355,11 +384,14 @@ print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
 print (" ")
-print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object")
+print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object")
 print (" ")
 lizt = ["wooden key", "gilded envelope"]
 t = Desc(room)
 while True:
+    turncounterz = 8 - turncounter
+    print ("Turns Remaining: " + str(turncounterz))
+    print (" ")
     move = input (": ")
     move = move.lower()
     movescript = move.split(" ")
@@ -367,25 +399,41 @@ while True:
     ent1 = movescript[0]
     if ent1 == "n" or ent1 == "s" or ent1 == "e" or ent1 == "w" or ent1 == "u" or ent1 == "d":
         dire = MoveProc(ent1)
-        room, pos = Movement(room, dire)
+        room, pos, turncounter = Movement(values, room, dire, turncounter)
         if pos == 0:
             j = 3
         else:
             t = Desc(room)
-        ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+        ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+        turncounter = turncounter + 1
     elif ent1 == "i":
         rim = selfinv(lizt, rim)
     elif ent1 == "l" or ent1 == "look":
-        print (" ")
         t = Desc(room)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
-    elif ent1 == "drop":
+    elif ent1 == "drop" or ent1 == "grab":
+        if ent1 == "drop":
+            word = "drop"
+            jj = 1
+        if ent1 == "grab":
+            word = "grab"
+            jj = 2
         ent2 = movescript[1]
         if ent2 == " ":
-            print ("Please be more specific. What would you like to drop? ")
+            print ("Please be more specific. What would you like to " + word + "?")
+            turncounter = turncounter - 1  
             print (" ")
         else:
-            rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+            turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
+        turncounter = turncounter + 1    
     else:
         print ("Invalid command. ")
         print (" ")
+    if turncounter == 8:
+        print ("The easy part is looking. ")
+        print ("It's hard enough to find. ")
+        print ("Be brave this time, my darling. ")
+        print ("And do not disappoint me. ")
+        print (" ")
+        break
+print ("Game over!")
