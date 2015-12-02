@@ -365,7 +365,7 @@ def use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri
                 spir = values[2]
                 if int > 12:
                     print ("You think for a moment, then slide your finger under the flap of the envelope, creasing the paper inside. Soon, you can easily pull out the letter!")
-                    g = 8
+                    t = 8
                 if her > 12:
                     print ("This is a job for a hero! You throw the envelope on the ground and smash it until it opens. You feel proud.")
                 if 
