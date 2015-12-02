@@ -36,15 +36,15 @@ def Init():
             print ("That will do. Now, time to become yourself.")
             g = 1
     print (" ")
-    print ("You will have 50 attribute points to spend on ten categories: ")
-    namestat = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Wit", "Luck", "Manipulation", "Ambition", "Beauty", "Optimism"]
+    print ("You will have 30 attribute points to spend on six categories: ")
+    namestat = ["Bravery", "Tenacity", "Wisdom", "Cleverness", "Luck", "Manipulation"]
     for i in namestat:
         print (i)
     print (" ")
-    num = 50
-    list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    list2 = ["Bravery is the ability to act in a situation. ", "Tenacity is the ability to withstand pain. ", "Wisdom is the ability to acquire and recall knowledge, as well as the knowledge of when to use it. ", "Cleverness is the ability to solve problems quickly. ", "Wit is the ability to make friends and be liked. ", "Luck is a natural gift not quite described. ", "Manipulation is the ability to change minds in ways less honorable. ", "Ambition is the drive to excel and go beyond. ", "Beauty is a natural appearance and charm. ", "Optimism is the ability to see the best in a bad situation. "]
-    for x in range (0, 10):
+    num = 30
+    list1 = [0, 0, 0, 0, 0, 0]
+    list2 = ["Bravery is the ability to act in a situation. ", "Tenacity is the ability to withstand pain. ", "Wisdom is the ability to acquire and recall knowledge, as well as the knowledge of when to use it. ", "Cleverness is the ability to solve problems quickly. ", "Luck is a natural gift not quite described. ", "Manipulation is the ability to change minds in ways less honorable. "]
+    for x in range (0, 6):
         desc = list2[x]
         print (desc)
         namre = namestat[x]
@@ -74,38 +74,23 @@ def Init():
         print ("Cleverness: 0")
         list1[3] = 0
         print (" ")
-    mgc = [5, 7, 2]
-    phys = [1, 5, 3]
-    con = [6, 8, 2]
-    hap = [9, 4, 7]
-    lik = [4, 0, 6]
-    lead = [7, 6, 4]
-    hero = [0, 1, 5]
-    spi = [2, 9, 8]
-    intel = [3, 2, 9]
-    beg = [8, 3, 0]
-    att = ["Magic", "Physical Fitness", "Connections in High Places", "Happiness", "Likeability", "Leadership", "Heroicness", "Spirituality", "Intelligence", "Beguiling"]
-    nums2 = [mgc, phys, con, hap, lik, lead, hero, spi, intel, beg]
-    names = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    print ("Now, we will determine secondary statistics. ")
-    print ("Secondary statistics have real impact in the game. They are determined by your primary statistics you have just entered, and are out of thirty. ")
-    print ("Don't worry, all primary statistics are used once for all above categories. They are all equal! ")
-    print ("The average score is 12.5. Most of your scores will end up being close to this. It's not possible to be negative!")
+    hero = [0, 1]
+    intel = [3, 5]
+    spir = [2, 4]
+    att = ["Heroicness", "Intelligence", "Spirit"]
+    nums2 = [hero, intel, spir]
+    names = [0, 0, 0]
+    values = [0, 0, 0]
     print (" ")
-    for x in range (0, 10):
+    for x in range (0, 3):
         attr = att[x]
         varlist = nums2[x]
         major = varlist[0]
         minor = varlist[1]
-        neg = varlist[2]
         majname = namestat[major]
         minname = namestat[minor]
-        negname = namestat[neg]
-        lvl = list1[major] + list1[major] + list1[minor] - (list1[neg])/2
-        if lvl < 0:
-            lvl = 0
-        print (attr + ": Two times " + majname + " plus " + minname + " minus one half " + negname)
+        lvl = list1[major] + list1[minor]
+        print (attr + ": " + majname + " plus " + minname + ".")
         print (attr + ": " + str(lvl))
         values[x] = lvl
         namer = input("Type anything to continue. ")
@@ -114,19 +99,6 @@ def Init():
     valuez = values[:]
     val2 = valuez.sort()
     return values
-    """
-    maxm = val2[9]
-    sec = val2[8]
-    valuec = values[:]
-    locsec = valuec.index(sec)
-    valuz = valuec [:]
-    valuz.remove(sec)
-    locmax = valuz.index(maxm) + 1
-    maxstat = att[locmax]
-    secstat = att[locsec]
-    print ("Your dominant skill is " + maxstat + ", followed by " + secstat + ". These skills will serve you well in the future. ")
-    i = input ("Now, let us begin! ")
-    """
 
 def Transition():
     print (" ")
@@ -271,8 +243,8 @@ def Movement(values, room, dire, turncounter):
         return room, pos, turncounter
     else:
         if room == 4:
-            hero = values[6]
-            if hero < 15:
+            hero = values[0]
+            if hero < 11:
                 print (" ")
                 print ("You feel your legs shaking beneath you, and realize that being heroic simply isn't your strong suit. " +
                 "After all, what's the point of being the hero when you're dead?? ")
@@ -317,11 +289,11 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
     ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
     rlizzle = ret[room]
     ent2 = movescript[1]
-    if ent2 == "key" or ent2 == "envelope":
+    if ent2 == "stone" or ent2 == "envelope":
         g = 3
-    if ent2 == "wooden" or ent2 == "gilded":
+    if ent2 == "small" or ent2 == "gilded":
         ent3 = movescript[2]
-        if ent3 == "key" or ent3 == "envelope":
+        if ent3 == "stone" or ent3 == "envelope":
             g = 3
         else:
             print ("Object to " + word + " not understood. ")
@@ -329,7 +301,7 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
             print (" ")
             return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     if g == 3:
-        if ent2 == "wooden" or ent2 == "key":
+        if ent2 == "small" or ent2 == "stone":
             obj = 0
             if jj == 1:
                 check = rim[0]
@@ -362,7 +334,42 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
         print (" ")
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
-
+def use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
+    ent2 = movescript[1]:
+        if ent2 == "small" or ent2 == "stone":
+            g = 3
+            obj = 0
+        elif ent2 == "gilded" or ent2 == "envelope":
+            g = 3
+            obj = 1
+        else:
+            print ("Object not understood. ")
+            turncounter = turncounter - 1
+            return turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        rlizzle = lizt[obj]
+        check = rim[obj]
+        if rim == 0:
+            print ("You are not holding the " + rlizzle + ".")
+            turncounter = turncounter - 1
+            return turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
+        else:
+            if obj == 0:
+                if ba == 0:
+                    print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
+                if ba == 1:
+                    print ("Following the instructions on the letter, you touch the top of the stone with your index finger. A bright light! ")
+            if obj == 1:
+                print ("The letter refuses to open... You must rely on your special skills!")
+                her = values[0]
+                int = values[1]
+                spir = values[2]
+                if int > 12:
+                    print ("You think for a moment, then slide your finger under the flap of the envelope, creasing the paper inside. Soon, you can easily pull out the letter!")
+                    g = 8
+                if her > 12:
+                    print ("This is a job for a hero! You throw the envelope on the ground and smash it until it opens. You feel proud.")
+                if 
+ba = 0
 room = 1
 turncounter = 0
 ret = []
@@ -384,9 +391,9 @@ print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
 print (" ")
-print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object")
+print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, use - use object")
 print (" ")
-lizt = ["wooden key", "gilded envelope"]
+lizt = ["small stone", "gilded envelope"]
 t = Desc(room)
 while True:
     turncounterz = 8 - turncounter
@@ -426,6 +433,15 @@ while True:
         else:
             turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
         turncounter = turncounter + 1    
+    elif ent1 == "use":
+        ent2 = movescript[1]
+        if ent2 == " ":
+            print ("Please be more specific. What would you like to use?")
+            turncounter = turncounter - 1
+            print (" ")
+        else: 
+        turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
+        
     else:
         print ("Invalid command. ")
         print (" ")
