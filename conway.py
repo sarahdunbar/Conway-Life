@@ -495,3 +495,6 @@ while True:
         print (" ")
         break
 print ("Game over!")
+
+"Use stone, use stone again)
+
