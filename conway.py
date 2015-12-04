@@ -289,11 +289,11 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
     ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
     rlizzle = ret[room]
     ent2 = movescript[1]
-    if ent2 == "stone" or ent2 == "envelope":
+    if ent2 == "stone" or ent2 == "envelope" or ent2 == "key":
         g = 3
-    if ent2 == "small" or ent2 == "gilded":
+    if ent2 == "small" or ent2 == "gilded" or ent2 == "wooden":
         ent3 = movescript[2]
-        if ent3 == "stone" or ent3 == "envelope":
+        if ent3 == "stone" or ent3 == "envelope" or ent3 == "key":
             g = 3
         else:
             print ("Object to " + word + " not understood. ")
@@ -313,6 +313,12 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
                 check = rim[1]
             if jj == 2:
                 check = rlizzle[1]
+        if ent2 == "wooden" or ent2 == "key":
+            obj = 2
+            if jj == 1:
+                check = rim[2]
+            if jj == 2:
+                check = rlizzle[2]
     if check == 0:
         if jj == 1:
             print ("You are not holding that object! ")
@@ -334,57 +340,87 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
         print (" ")
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
-def use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
-    ent2 = movescript[1]:
+def use (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
+    ede = 0
+    ent2 = movescript[1]
+    t = True
+    if t == True:
         if ent2 == "small" or ent2 == "stone":
             g = 3
             obj = 0
         elif ent2 == "gilded" or ent2 == "envelope":
             g = 3
             obj = 1
+        elif ent2 == "wooden" or ent2 == "key":
+            g = 3
+            obj = 2
         else:
             print ("Object not understood. ")
             turncounter = turncounter - 1
-            return turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         rlizzle = lizt[obj]
         check = rim[obj]
         if rim == 0:
-            print ("You are not holding the " + rlizzle + ".")
+            print ("You are not holding a " + rlizzle + ".")
             turncounter = turncounter - 1
-            return turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
+            return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
         else:
             if obj == 0:
                 if ba == 0:
                     print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
                 if ba == 1:
                     print ("Following the instructions on the letter, you touch the top of the stone with your index finger. A bright light! ")
+                    print ("Words appear in the air in front of you... - What once was empty, now is not. ")
+                    ba = 0
+                    ede = 1
+                    return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 1:
-                print ("The letter refuses to open... You must rely on your special skills!")
+                print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
                 her = values[0]
-                int = values[1]
+                intl = values[1]
                 spir = values[2]
-                if int > 12:
-                    print ("You think for a moment, then slide your finger under the flap of the envelope, creasing the paper inside. Soon, you can easily pull out the letter!")
+                if intl > 15:
+                    print ("You think for a moment, then slide your finger under the flap of the envelope and rip. Who would have thought opening an envelope would be so easy?")
                     t = 8
-                if her > 12:
+                elif her > 15:
                     print ("This is a job for a hero! You throw the envelope on the ground and smash it until it opens. You feel proud.")
-                if 
+                    t = 8
+                elif spir > 15:
+                    print ("The moon... the rivers... the trees... Magically, the letter slides out of the envelope. ")
+                    t = 8
+                else:
+                    print ("But unfortunately, you have no special skills. Shrugging your shoulders, you put the envelope back in your bag. ")
+                    turncounter = turncounter - 1
+                    return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                    print (" ")
+                print (" ")
+                print ("As soon as you pull out the letter, it begins to disintigrate. Quickly, you scan it before it disappears in your hands. ")
+                print ("Touch your index finger to the thing you've been holding from the beginning. Do not disappoint me. ")
+                ba = 1
+                rim[1] = 0
+                return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            if obj == 2:
+                print ("You try, but you're not sure how to 'use' a wooden key. Maybe 'unlock' would be a better thing to do? ")
+                turncounter = turncounter - 1
+                print (" ")
+                return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+
 ba = 0
 room = 1
 turncounter = 0
 ret = []
 rim = []
-rim = [1, 0]
-ri1 = [0, 0]
-ri2 = [0, 1]
-ri3 = [0, 0]
-ri4 = [0, 0]
-ri5 = [0, 0]
-ri6 = [0, 0]
-ri7 = [0, 0]
-ri8 = [0, 0]
-ri9 = [0, 0]
-ri10 = [0, 0]
+rim = [1, 0, 0]
+ri1 = [0, 0, 0]
+ri2 = [0, 1, 0]
+ri3 = [0, 0, 0]
+ri4 = [0, 0, 0]
+ri5 = [0, 0, 0]
+ri6 = [0, 0, 0]
+ri7 = [0, 0, 0]
+ri8 = [0, 0, 0]
+ri9 = [0, 0, 0]
+ri10 = [0, 0, 0]
 values = Init()
 t = Transition()
 print ("You have been here before. ")
@@ -393,10 +429,10 @@ print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, use - use object")
 print (" ")
-lizt = ["small stone", "gilded envelope"]
+lizt = ["small stone", "gilded envelope", "wooden key"]
 t = Desc(room)
 while True:
-    turncounterz = 8 - turncounter
+    turncounterz = 20 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
     print (" ")
     move = input (": ")
@@ -440,12 +476,18 @@ while True:
             turncounter = turncounter - 1
             print (" ")
         else: 
-        turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
-        
+            ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
+            print (str(ede))
+            turncounter = turncounter + 1
+            print (" ")
     else:
         print ("Invalid command. ")
         print (" ")
-    if turncounter == 8:
+    if ede == 1:
+        print ("bu")
+        ri7[2] = 1
+        ede = 0
+    if turncounter == 20:
         print ("The easy part is looking. ")
         print ("It's hard enough to find. ")
         print ("Be brave this time, my darling. ")
