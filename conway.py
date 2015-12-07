@@ -69,11 +69,6 @@ def Init():
         print ("Points left: " + str(num))
         list1[x] = ent
         print (" ")
-    if num > 0:
-        print ("You didn't plan very well, did you. That doesn't speak well for your intelligence... ")
-        print ("Cleverness: 0")
-        list1[3] = 0
-        print (" ")
     hero = [0, 1]
     intel = [3, 5]
     spir = [2, 4]
@@ -151,7 +146,7 @@ def Transition():
     print (" ")
     print (" ")
     
-def Desc(room):
+def Desc(room, ede, ba):
     if room == 1:
         print ("Courtyard Proper")
         print ("You are standing outside a spindly northern tower with a stained glass door. Around you, "
@@ -163,9 +158,15 @@ def Desc(room):
         "Around you, the green grass extends almost to your head. A path winds east through the jade ocean towards " +
         "what looks like a tower.")
     if room == 3:
-        print ("Small Ditch")
-        print ("The path east leading to the small ditch you are standing in is overgrown with moss. There is a hole " +
-        "in the northern cave wall. Even in here, the grass is eerily green. ")
+        if ba == 0:
+            print ("Small Ditch")
+            print ("The path east leading to the small ditch you are standing in is overgrown with moss. There is a hole " +
+            "in the northern cave wall. Even in here, the grass is eerily green. ")
+        if ba == 1:
+            print ("Crystal Valley")
+            print ("The path east leading to the valley you are standing in is clean and well swept. " +
+            "As you go deeper, the walls get progressively shinier, until it's positively glowing blue. There is a gilded hole in the " +
+            "northern wall. ")
     if room == 4:
         print ("Crystal Cave")
         print ("The passage takes you into a small cave adorned with rainbow crystals. Somehow, you think you "
@@ -340,8 +341,10 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
         print (" ")
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
-def use (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
+        
+def openi (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
     ede = 0
+    bur = 0
     ent2 = movescript[1]
     t = True
     if t == True:
@@ -366,12 +369,12 @@ def use (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, r
             return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
         else:
             if obj == 0:
-                if ba == 0:
+                if bur == 0:
                     print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
-                if ba == 1:
-                    print ("Following the instructions on the letter, you touch the top of the stone with your index finger. A bright light! ")
-                    print ("Words appear in the air in front of you... - What once was empty, now is not. ")
-                    ba = 0
+                    return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                if bur == 1:
+                    print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
+                    print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
                     ede = 1
                     return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 1:
@@ -379,24 +382,20 @@ def use (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, r
                 her = values[0]
                 intl = values[1]
                 spir = values[2]
-                if intl > 15:
+                if intl > 9:
                     print ("You think for a moment, then slide your finger under the flap of the envelope and rip. Who would have thought opening an envelope would be so easy?")
                     t = 8
-                elif her > 15:
+                elif her > 9:
                     print ("This is a job for a hero! You throw the envelope on the ground and smash it until it opens. You feel proud.")
                     t = 8
-                elif spir > 15:
+                elif spir > 9:
                     print ("The moon... the rivers... the trees... Magically, the letter slides out of the envelope. ")
                     t = 8
-                else:
-                    print ("But unfortunately, you have no special skills. Shrugging your shoulders, you put the envelope back in your bag. ")
-                    turncounter = turncounter - 1
-                    return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-                    print (" ")
                 print (" ")
                 print ("As soon as you pull out the letter, it begins to disintigrate. Quickly, you scan it before it disappears in your hands. ")
-                print ("Touch your index finger to the thing you've been holding from the beginning. Do not disappoint me. ")
+                print ("Touch your index finger to the top and open the thing you've been holding from the beginning. Do not disappoint me. ")
                 ba = 1
+                bur = 1
                 rim[1] = 0
                 return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 2:
@@ -406,6 +405,7 @@ def use (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, r
                 return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
 
 ba = 0
+ede = 0
 room = 1
 turncounter = 0
 ret = []
@@ -427,10 +427,10 @@ print ("You have been here before. ")
 print ("You have eight turns. ")
 print ("Do not disappoint me. ")
 print (" ")
-print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, use - use object")
+print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, open - open object")
 print (" ")
 lizt = ["small stone", "gilded envelope", "wooden key"]
-t = Desc(room)
+t = Desc(room, ede, ba)
 while True:
     turncounterz = 20 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
@@ -446,13 +446,13 @@ while True:
         if pos == 0:
             j = 3
         else:
-            t = Desc(room)
+            t = Desc(room, ede, ba)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
         turncounter = turncounter + 1
     elif ent1 == "i":
         rim = selfinv(lizt, rim)
     elif ent1 == "l" or ent1 == "look":
-        t = Desc(room)
+        t = Desc(room, ede, ba)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
     elif ent1 == "drop" or ent1 == "grab":
         if ent1 == "drop":
@@ -469,23 +469,22 @@ while True:
         else:
             turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
         turncounter = turncounter + 1    
-    elif ent1 == "use":
+    elif ent1 == "open":
         ent2 = movescript[1]
         if ent2 == " ":
-            print ("Please be more specific. What would you like to use?")
+            print ("Please be more specific. What would you like to open?")
             turncounter = turncounter - 1
             print (" ")
         else: 
-            ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = use(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
-            print (str(ede))
+            ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = openi(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
             turncounter = turncounter + 1
             print (" ")
     else:
         print ("Invalid command. ")
         print (" ")
     if ede == 1:
-        print ("bu")
-        ri7[2] = 1
+        ri3[2] = 1
+        ba = 1
         ede = 0
     if turncounter == 20:
         print ("The easy part is looking. ")
@@ -496,5 +495,4 @@ while True:
         break
 print ("Game over!")
 
-"Use stone, use stone again)
 
