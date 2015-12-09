@@ -171,7 +171,7 @@ def Desc(room, ede, ba):
         print ("Crystal Cave")
         print ("The passage takes you into a small cave adorned with rainbow crystals. Somehow, you think you "
         + "have seen this place before... An abandoned mineshaft slopes east into blackness. Nailed beside it, a sign. "
-        + "ONLY FOR THE HEROIC")
+        + "ONLY FOR THE TALENTED")
     if room == 5:
         print ("Mineshaft")
         print ("As you walk along the rusted tracks, you get the increasing feeling that you're walking in a circle. "
@@ -356,6 +356,9 @@ def openi (bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3,
         elif ent2 == "wooden" or ent2 == "key":
             g = 3
             obj = 2
+        elif ent2 == "oak" or ent2 == "door":
+            g = 3
+            obj = 3
         else:
             print ("Object not understood. ")
             turncounter = turncounter - 1
@@ -398,11 +401,20 @@ def openi (bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3,
                 rim[1] = 0
                 return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 2:
-                print ("You try, but you're not sure how to 'use' a wooden key. Maybe 'unlock' would be a better thing to do? ")
+                print ("The wooden key refuses to open. You know you're allowed to open doors, right?")
                 turncounter = turncounter - 1
                 print (" ")
                 return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-
+            if obj == 3:
+                if room == 6 or room == 4:
+                    key = rim[2]
+                    if key == 1:
+                        
+                else:
+                    print ("What door?")
+                    print (" ")
+                    turncounter = turncounter - 1
+                    return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
 ba = 0
 bur = 0
 ede = 0
@@ -494,3 +506,5 @@ while True:
         print (" ")
         break
 print ("Game over!")
+
+#door, two lists, lock/unlock
