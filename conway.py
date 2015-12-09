@@ -342,9 +342,8 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
         
-def openi (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
+def openi (bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
     ede = 0
-    bur = 0
     ent2 = movescript[1]
     t = True
     if t == True:
@@ -360,23 +359,23 @@ def openi (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4,
         else:
             print ("Object not understood. ")
             turncounter = turncounter - 1
-            return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         rlizzle = lizt[obj]
         check = rim[obj]
         if rim == 0:
             print ("You are not holding a " + rlizzle + ".")
             turncounter = turncounter - 1
-            return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
+            return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
         else:
             if obj == 0:
                 if bur == 0:
                     print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
-                    return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                    return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
                 if bur == 1:
                     print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
                     print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
                     ede = 1
-                    return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                    return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 1:
                 print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
                 her = values[0]
@@ -397,14 +396,15 @@ def openi (turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4,
                 ba = 1
                 bur = 1
                 rim[1] = 0
-                return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 2:
                 print ("You try, but you're not sure how to 'use' a wooden key. Maybe 'unlock' would be a better thing to do? ")
                 turncounter = turncounter - 1
                 print (" ")
-                return ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
 
 ba = 0
+bur = 0
 ede = 0
 room = 1
 turncounter = 0
@@ -476,7 +476,7 @@ while True:
             turncounter = turncounter - 1
             print (" ")
         else: 
-            ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = openi(turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
+            bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = openi(bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
             turncounter = turncounter + 1
             print (" ")
     else:
@@ -494,5 +494,3 @@ while True:
         print (" ")
         break
 print ("Game over!")
-
-
