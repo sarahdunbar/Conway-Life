@@ -151,7 +151,8 @@ def Desc(room, ede, ba):
         print ("Courtyard Proper")
         print ("You are standing outside a spindly northern tower with a stained glass door. Around you, "
         + "an endless sea of grass ripples in the wind. It is eerily green, almost neon in its brightness. " +
-        "Aside from overgrown paths east and west through the tresses, there is nothing for miles. ")
+        "Aside from overgrown paths east and west through the tresses, there is nothing for miles. " + 
+        "Beside the door is a sign -I OPEN WITH A KEY-")
     if room == 2:
         print ("Sasha's Courtyard")
         print ("You are standing in a flattened patch of grass known as Sasha's Courtyard. " +
@@ -170,8 +171,7 @@ def Desc(room, ede, ba):
     if room == 4:
         print ("Crystal Cave")
         print ("The passage takes you into a small cave adorned with rainbow crystals. Somehow, you think you "
-        + "have seen this place before... An abandoned mineshaft slopes east into blackness. Nailed beside it, a sign. "
-        + "ONLY FOR THE TALENTED")
+        + "have seen this place before... To the east, an oaken door. Beside it, a sign. -I OPEN WITH A KEY-")
     if room == 5:
         print ("Mineshaft")
         print ("As you walk along the rusted tracks, you get the increasing feeling that you're walking in a circle. "
@@ -223,7 +223,7 @@ def MoveProc(move):
             move = input (": ")
     return dire
 
-def Movement(values, room, dire, turncounter):
+def Movement(dor, values, room, dire, turncounter):
     r1 = [6, 3, 0, 2, 0, 0]
     r2 = [0, 1, 0, 0, 0, 0]
     r3 = [4, 0, 0, 1, 0, 0]
@@ -243,18 +243,30 @@ def Movement(values, room, dire, turncounter):
         turncounter = turncounter - 1
         return room, pos, turncounter
     else:
-        if room == 4:
-            hero = values[0]
-            if hero < 11:
-                print (" ")
-                print ("You feel your legs shaking beneath you, and realize that being heroic simply isn't your strong suit. " +
-                "After all, what's the point of being the hero when you're dead?? ")
-                pos = 0
-                turncounter = turncounter - 1
-                return room, pos, turncounter
+        if room == 1:
+            if pos == 6:
+                doc = dor[0]
+                if doc == 0:
+                    print ("The door is locked! ")
+                    turncounter = turncounter - 1
+                    print (" ")
+                    return room, pos, turncounter
+                else:
+                    p = 1
             else:
-                print (" ")
-                print ("You puff up your chest and venture into the blackness. ")
+                p = 1
+        if room == 4:
+            if pos == 5:
+                doc = dor[1]
+                if doc == 0:
+                    print ("The door is locked! ")
+                    turncounter = turncounter - 1
+                    print (" ")
+                    return room, pos, turncounter
+                else:
+                    p = 1
+            else:
+                p = 1
         room = pos
         return room, pos, turncounter
         
@@ -342,7 +354,7 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
         
-def openi (bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
+def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba):
     ede = 0
     ent2 = movescript[1]
     t = True
@@ -362,23 +374,23 @@ def openi (bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3,
         else:
             print ("Object not understood. ")
             turncounter = turncounter - 1
-            return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         rlizzle = lizt[obj]
         check = rim[obj]
         if rim == 0:
             print ("You are not holding a " + rlizzle + ".")
             turncounter = turncounter - 1
-            return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
+            return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
         else:
             if obj == 0:
                 if bur == 0:
                     print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
-                    return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                    return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
                 if bur == 1:
                     print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
                     print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
                     ede = 1
-                    return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                    return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 1:
                 print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
                 her = values[0]
@@ -399,22 +411,28 @@ def openi (bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3,
                 ba = 1
                 bur = 1
                 rim[1] = 0
-                return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 2:
                 print ("The wooden key refuses to open. You know you're allowed to open doors, right?")
                 turncounter = turncounter - 1
                 print (" ")
-                return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if obj == 3:
                 if room == 6 or room == 4:
                     key = rim[2]
                     if key == 1:
-                        
+                        if room == 1:
+                            nom = 0
+                        if room == 4:
+                            nom = 1
+                    dor[nom] = 1
+                    print ("You have unlocked the door!")
+                    return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
                 else:
                     print ("What door?")
                     print (" ")
                     turncounter = turncounter - 1
-                    return bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+                    return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
 ba = 0
 bur = 0
 ede = 0
@@ -422,6 +440,7 @@ room = 1
 turncounter = 0
 ret = []
 rim = []
+dor = [0, 0]
 rim = [1, 0, 0]
 ri1 = [0, 0, 0]
 ri2 = [0, 1, 0]
@@ -454,7 +473,7 @@ while True:
     ent1 = movescript[0]
     if ent1 == "n" or ent1 == "s" or ent1 == "e" or ent1 == "w" or ent1 == "u" or ent1 == "d":
         dire = MoveProc(ent1)
-        room, pos, turncounter = Movement(values, room, dire, turncounter)
+        room, pos, turncounter = Movement(dor, values, room, dire, turncounter)
         if pos == 0:
             j = 3
         else:
@@ -488,7 +507,7 @@ while True:
             turncounter = turncounter - 1
             print (" ")
         else: 
-            bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = openi(bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
+            dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = openi(dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, ba)
             turncounter = turncounter + 1
             print (" ")
     else:
@@ -507,4 +526,4 @@ while True:
         break
 print ("Game over!")
 
-#door, two lists, lock/unlock
+crystal cave, open door
