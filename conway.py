@@ -153,44 +153,54 @@ def Desc(room, ede, ba):
         + "an endless sea of grass ripples in the wind. It is eerily green, almost neon in its brightness. " +
         "Aside from overgrown paths east and west through the tresses, there is nothing for miles. " + 
         "Beside the door is a sign -I OPEN WITH A KEY-")
+        print ("Directions: n, e, w")
     if room == 2:
         print ("Sasha's Courtyard")
         print ("You are standing in a flattened patch of grass known as Sasha's Courtyard. " +
         "Around you, the green grass extends almost to your head. A path winds east through the jade ocean towards " +
         "what looks like a tower.")
+        print ("Directions: e")
     if room == 3:
         if ba == 0:
             print ("Small Ditch")
             print ("The path east leading to the small ditch you are standing in is overgrown with moss. There is a hole " +
             "in the northern cave wall. Even in here, the grass is eerily green. ")
+            print ("Directions: w, n")
         if ba == 1:
             print ("Crystal Valley")
             print ("The path east leading to the valley you are standing in is clean and well swept. " +
             "As you go deeper, the walls get progressively shinier, until it's positively glowing blue. There is a gilded hole in the " +
             "northern wall. ")
+            print ("Directions: w, n")
     if room == 4:
         print ("Crystal Cave")
         print ("The passage takes you into a small cave adorned with rainbow crystals. Somehow, you think you "
         + "have seen this place before... To the east, an oaken door. Beside it, a sign. -I OPEN WITH A KEY-")
+        print ("Directions: s, e")
     if room == 5:
         print ("Mineshaft")
         print ("As you walk along the rusted tracks, you get the increasing feeling that you're walking in a circle. "
         + "But then, a light ahead!")
+        print ("Directions: e")
     if room == 6:
         print ("Atrium")
         print ("You are standing in the dark castle room known as the atrium. The only light comes from the stained " +
         "glass window of the southern door. Stairways wind up and down into blackness. ")
+        print ("Directions: u, d, s")
     if room == 7:
         print ("Billiard Room")
         print ("What was once the billiard room is now grey and filled with light. Stairs wind down the stone walls into blackness. ")
+        print ("Directions: d")
     if room == 8:
         print ("Basement")
         print ("In here, it is so dark that you can't " + 
         "see your feet in front of you. Even though there are no windows, this room is distinctly drafty. ")
+        print ("Directions: u, ?")
     if room == 9:
         print ("Southern Corridor")
         print ("Somehow, you have stumbled upon a hidden corridor! The floor is "
         + "distinctly earthy, and you fear that the loose dirt ceiling will collapse on your head at any minute.")
+        print ("Directions: s")
     if room == 10:
         print ("Erdgeschoss Grounds")
         print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
@@ -276,6 +286,7 @@ def inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     rlist = ret[rnum]
     length = len(rlist)
     wut = [""]*length
+    print (" ")
     for i in range (0, length):
         num = rlist[i]
         if num == 0:
@@ -376,63 +387,68 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
             turncounter = turncounter - 1
             return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         rlizzle = lizt[obj]
-        check = rim[obj]
-        if rim == 0:
-            print ("You are not holding a " + rlizzle + ".")
-            turncounter = turncounter - 1
-            return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
-        else:
-            if obj == 0:
-                if bur == 0:
-                    print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
-                    return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-                if bur == 1:
-                    print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
-                    print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
-                    ede = 1
-                    return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-            if obj == 1:
-                print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
-                her = values[0]
-                intl = values[1]
-                spir = values[2]
-                if intl > 9:
-                    print ("You think for a moment, then slide your finger under the flap of the envelope and rip. Who would have thought opening an envelope would be so easy?")
-                    t = 8
-                elif her > 9:
-                    print ("This is a job for a hero! You throw the envelope on the ground and smash it until it opens. You feel proud.")
-                    t = 8
-                elif spir > 9:
-                    print ("The moon... the rivers... the trees... Magically, the letter slides out of the envelope. ")
-                    t = 8
-                print (" ")
-                print ("As soon as you pull out the letter, it begins to disintigrate. Quickly, you scan it before it disappears in your hands. ")
-                print ("Touch your index finger to the top and open the thing you've been holding from the beginning. Do not disappoint me. ")
-                ba = 1
-                bur = 1
-                rim[1] = 0
-                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-            if obj == 2:
-                print ("The wooden key refuses to open. You know you're allowed to open doors, right?")
+        if obj == 0 or obj == 1 or obj == 2:
+            check = rim[obj]
+            if rim == 0:
+                print ("You are not holding a " + rlizzle + ".")
                 turncounter = turncounter - 1
-                print (" ")
+                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
+        if obj == 0:
+            if bur == 0:
+                print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-            if obj == 3:
-                if room == 6 or room == 4:
-                    key = rim[2]
-                    if key == 1:
-                        if room == 1:
-                            nom = 0
-                        if room == 4:
-                            nom = 1
+            if bur == 1:
+                print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
+                print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
+                ede = 1
+                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        if obj == 1:
+            print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
+            her = values[0]
+            intl = values[1]
+            spir = values[2]
+            if intl > 9:
+                print ("You think for a moment, then slide your finger under the flap of the envelope and rip. Who would have thought opening an envelope would be so easy?")
+                t = 8
+            elif her > 9:
+                print ("This is a job for a hero! You throw the envelope on the ground and smash it until it opens. You feel proud.")
+                t = 8
+            elif spir > 9:
+                print ("The moon... the rivers... the trees... Magically, the letter slides out of the envelope. ")
+                t = 8
+            print (" ")
+            print ("As soon as you pull out the letter, it begins to disintigrate. Quickly, you scan it before it disappears in your hands. ")
+            print ("Touch your index finger to the top and open the thing you've been holding from the beginning. Do not disappoint me. ")
+            bur = 1
+            rim[1] = 0
+            return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        if obj == 2:
+            print ("The wooden key refuses to open. You know you're allowed to open doors, right?")
+            turncounter = turncounter - 1
+            print (" ")
+            return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+        if obj == 3:
+            if room == 4 or room == 1:
+                key = rim[2]
+                if key == 1:
+                    if room == 1:
+                        nom = 0
+                    if room == 4:
+                        nom = 1
                     dor[nom] = 1
                     print ("You have unlocked the door!")
                     return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
                 else:
-                    print ("What door?")
+                    print ("The door is locked! ")
                     print (" ")
                     turncounter = turncounter - 1
                     return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            else:
+                print ("What door?")
+                print (" ")
+                turncounter = turncounter - 1
+                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+
 ba = 0
 bur = 0
 ede = 0
@@ -460,7 +476,7 @@ print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, open - open object")
 print (" ")
-lizt = ["small stone", "gilded envelope", "wooden key"]
+lizt = ["small stone", "gilded envelope", "wooden key", "oak door"]
 t = Desc(room, ede, ba)
 while True:
     turncounterz = 20 - turncounter
@@ -513,7 +529,7 @@ while True:
     else:
         print ("Invalid command. ")
         print (" ")
-    if ede == 1:
+    if ede == 1
         ri3[2] = 1
         ba = 1
         ede = 0
@@ -526,4 +542,4 @@ while True:
         break
 print ("Game over!")
 
-crystal cave, open door
+#crystal cave, open door
