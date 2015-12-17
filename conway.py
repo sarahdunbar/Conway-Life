@@ -529,17 +529,94 @@ while True:
     else:
         print ("Invalid command. ")
         print (" ")
-    if ede == 1
+    if ede == 1:
         ri3[2] = 1
         ba = 1
         ede = 0
     if turncounter == 20:
         print ("The easy part is looking. ")
         print ("It's hard enough to find. ")
-        print ("Be brave this time, my darling. ")
+        print ("Be skilled this time, my darling. ")
         print ("And do not disappoint me. ")
         print (" ")
         break
-print ("Game over!")
+    if room == 10:
+        turncountere = 20 - turncounter
+        print (" ")
+        print ("You've made it through your first test. Now, time for your second. ")
+        run = input ("Pick a class, preferably your strongest. 'h' for heroism, 'i' for intelligence, and 's' for spirit.")
+        run.lower
+        while True:
+            if run == "h":
+                stat = turncountere + values[0]
+                num = 0
+                break
+            elif run == "i":
+                stat = turncountere + values[1]
+                num = 1
+                break
+            elif run == "s":
+                stat = turncountere + values[2]
+                num = 2
+                break
+            else:
+                print (" ")
+                print ("I could not understand you. Again, again, and with haste! ")
+                run = input(": ")
+        print (" ")
+        print ("Suddenly, the ground falls away beneath your feet and you're falling... falling... ")
+        t = 0
+        while t == 0:
+            if num == 0:
+                print ("Fear fogs your vision, and you can't see. You reach deep inside yourself to find some kind of courage... ")
+                if stat > 25: 
+                    k = input ("You conjure up the images of your triumphs, and wrap yourself in warmth.")
+                    p = Transition()
+                    print ("It's time to wake up now. ")
+                    t = 1
+                else:
+                    k = input ("But it's too much. You give in to the terror. ")    
+                    break
+            if num == 1:
+                print ("As you fall, you feel panic beginning to overwhelm your intellect. You struggle to focus...")
+                if stat > 25:
+                    k = input ("You breathe deeply, and your head begins to clear. It's so obvious now...")
+                    p = Transition()
+                    print ("It's time to wake up now. ")
+                    t = 1
+                else:
+                    k = input ("But you just can't focus. Already, you feel yourself giving in. ")
+                    break
+            if num == 2:
+                print ("But... but this isn't possible... You feel your faith begin to fade...")
+                if stat > 25:
+                    k = input ("But something is causing this, isn't it? It must have a plan in the end. You close your eyes and hope for the best. ")
+                    p = Transition()
+                    print ("It's time to wake up now. ")
+                    t = 1
+                else: 
+                    k = input ("Yes, the spirits have given up on you for sure. You give in to the hopelessness. ")
+                    break
+        if t == 0:
+            print (" ")
+            print ("The Void:")
+            print ("There is nothing here.")
+            print ("Directions: ")
+            print (" ")
+            print ("There are no choices left to make. You have disappointed me. ")
+            k = input (": ")
+            while True:
+                p = Transition()
+        if t == 1:
+            print (" ")
+            print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
+            k = input ("Here, have a memory. ")
+            print (" ")
+            p = Transition()
+            print ("Erdgeschoss Grounds: ")
+            print ("It's absolutely perfect.")
+            k = input ("Hit enter to wake up. ")
+            while True: 
+                p = Transition()
 
-#crystal cave, open door
+
