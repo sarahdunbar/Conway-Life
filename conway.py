@@ -449,6 +449,7 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                 turncounter = turncounter - 1
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
 
+import sys
 ba = 0
 bur = 0
 ede = 0
@@ -604,9 +605,7 @@ while True:
             print ("Directions: ")
             print (" ")
             print ("There are no choices left to make. You have disappointed me. ")
-            k = input (": ")
-            while True:
-                p = Transition()
+            sys.exit
         if t == 1:
             print (" ")
             print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
@@ -616,7 +615,6 @@ while True:
             print ("Erdgeschoss Grounds: ")
             print ("It's absolutely perfect.")
             k = input ("Hit enter to wake up. ")
-            while True: 
-                p = Transition()
+            sys.exit
 
 
