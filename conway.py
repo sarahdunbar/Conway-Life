@@ -145,6 +145,55 @@ def Transition():
     print (" ")
     print (" ")
     print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
+    print (" ")
     
 def Desc(room, ede, ba):
     if room == 1:
@@ -570,7 +619,7 @@ while True:
         while t == 0:
             if num == 0:
                 print ("Fear fogs your vision, and you can't see. You reach deep inside yourself to find some kind of courage... ")
-                if stat > 25: 
+                if stat > 20: 
                     k = input ("You conjure up the images of your triumphs, and wrap yourself in warmth.")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -580,7 +629,7 @@ while True:
                     break
             if num == 1:
                 print ("As you fall, you feel panic beginning to overwhelm your intellect. You struggle to focus...")
-                if stat > 25:
+                if stat > 20:
                     k = input ("You breathe deeply, and your head begins to clear. It's so obvious now...")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -590,7 +639,7 @@ while True:
                     break
             if num == 2:
                 print ("But... but this isn't possible... You feel your faith begin to fade...")
-                if stat > 25:
+                if stat > 20:
                     k = input ("But something is causing this, isn't it? It must have a plan in the end. You close your eyes and hope for the best. ")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -605,7 +654,7 @@ while True:
             print ("Directions: ")
             print (" ")
             print ("There are no choices left to make. You have disappointed me. ")
-            sys.exit
+            sys.exit()
         if t == 1:
             print (" ")
             print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
@@ -615,6 +664,6 @@ while True:
             print ("Erdgeschoss Grounds: ")
             print ("It's absolutely perfect.")
             k = input ("Hit enter to wake up. ")
-            sys.exit
+            sys.exit()
 
 
