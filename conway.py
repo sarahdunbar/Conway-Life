@@ -330,21 +330,34 @@ def Movement(dor, values, room, dire, turncounter):
         return room, pos, turncounter
         
 def inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10):
+    z = 0
+    d = [0, 0, 0]
     ret = [rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10]
     rnum = room
     rlist = ret[rnum]
     length = len(rlist)
     wut = [""]*length
-    print (" ")
     for i in range (0, length):
         num = rlist[i]
         if num == 0:
             g = 3
         if num == 1:
+            z = 1
             smi = lizt[i]
-            print ("There is a " + smi + " here. ")
-    print (" ")
-    return ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            d[i] = smi
+    if z == 1:
+        print (" ")
+        for i in range(0, length):
+            smi = d[i]
+            if smi == 0:
+                g = 3
+            else:
+                print ("There is a " + smi + " here. ")
+        print (" ")
+        return ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+    else:
+        print (" ")
+        return ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     
 def selfinv(lizt, rim):
     rib = len(rim)
@@ -498,7 +511,7 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                 turncounter = turncounter - 1
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
 
-import sys
+amplaying = True
 ba = 0
 bur = 0
 ede = 0
@@ -528,7 +541,7 @@ print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i 
 print (" ")
 lizt = ["small stone", "gilded envelope", "wooden key", "oak door"]
 t = Desc(room, ede, ba)
-while True:
+while amplaying == True:
     turncounterz = 20 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
     print (" ")
@@ -589,11 +602,11 @@ while True:
         print ("Be skilled this time, my darling. ")
         print ("And do not disappoint me. ")
         print (" ")
-        break
+        amplaying = False
     if room == 10:
         turncountere = 20 - turncounter
-        print (" ")
         print ("You've made it through your first test. Now, time for your second. ")
+        print (" ")
         run = input ("Pick a class, preferably your strongest. 'h' for heroism, 'i' for intelligence, and 's' for spirit.")
         run.lower
         while True:
@@ -629,7 +642,7 @@ while True:
                     break
             if num == 1:
                 print ("As you fall, you feel panic beginning to overwhelm your intellect. You struggle to focus...")
-                if stat > 20:
+                if stat > 20: 
                     k = input ("You breathe deeply, and your head begins to clear. It's so obvious now...")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -639,10 +652,10 @@ while True:
                     break
             if num == 2:
                 print ("But... but this isn't possible... You feel your faith begin to fade...")
-                if stat > 20:
+                if stat > 20: 
                     k = input ("But something is causing this, isn't it? It must have a plan in the end. You close your eyes and hope for the best. ")
                     p = Transition()
-                    print ("It's time to wake up now. ")
+                    ("It's time to wake up now. ")
                     t = 1
                 else: 
                     k = input ("Yes, the spirits have given up on you for sure. You give in to the hopelessness. ")
@@ -654,16 +667,113 @@ while True:
             print ("Directions: ")
             print (" ")
             print ("There are no choices left to make. You have disappointed me. ")
-            sys.exit()
+            amplaying = False
         if t == 1:
             print (" ")
             print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
-            k = input ("Here, have a memory. ")
+            k = input ("As a token of my gratitude, I will give you a glimpse into this world. ")
             print (" ")
             p = Transition()
-            print ("Erdgeschoss Grounds: ")
-            print ("It's absolutely perfect.")
-            k = input ("Hit enter to wake up. ")
-            sys.exit()
+            print (" ")
+            k = input ("Of course, now you can see it all, can't you? ")
+            amplaying = False
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
+print (" ")
 
 
