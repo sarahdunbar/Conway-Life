@@ -405,7 +405,7 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
     ent2 = movescript[1]
     if ent2 == "stone" or ent2 == "envelope" or ent2 == "key":
         g = 3
-    if ent2 == "small" or ent2 == "gilded" or ent2 == "wooden":
+    elif ent2 == "small" or ent2 == "gilded" or ent2 == "wooden":
         ent3 = movescript[2]
         if ent3 == "stone" or ent3 == "envelope" or ent3 == "key":
             g = 3
@@ -414,6 +414,11 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
             turncounter = turncounter - 1  
             print (" ")
             return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+    else:
+        print ("Object to " + word + " not understood. ")
+        print (" ")
+        turncounter = turncounter - 1
+        return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     if g == 3:
         if ent2 == "small" or ent2 == "stone":
             obj = 0
@@ -483,7 +488,7 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                 print ("You are not holding a " + rlizzle + "!")
                 turncounter = turncounter - 1
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
-        elif obj == 0:
+        if obj == 0:
             if bur == 0:
                 print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
@@ -497,7 +502,7 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                 print ("Even though you touch the stone, it does not open anymore. ")
                 print ("Now, the only thing it's good for is as a billiard ball. ")
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-        elif obj == 1:
+        if obj == 1:
             print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
             her = values[0]
             intl = values[1]
@@ -517,12 +522,12 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
             bur = 1
             rim[1] = 0
             return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-        elif obj == 2:
+        if obj == 2:
             print ("The wooden key refuses to open. You know you're allowed to open doors, right?")
             turncounter = turncounter - 1
             print (" ")
             return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-        elif obj == 3:
+        if obj == 3:
             if room == 4 or room == 1:
                 key = rim[2]
                 if key == 1:
@@ -566,7 +571,7 @@ ri10 = [0, 0, 0]
 values = Init()
 t = Transition()
 print ("You have been here before. ")
-print ("You have eight turns. ")
+print ("You have 20 turns. ")
 print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, open - open object")
