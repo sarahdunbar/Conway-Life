@@ -239,6 +239,8 @@ def Desc(room, ede, ba):
     if room == 7:
         print ("Billiard Room")
         print ("What was once the billiard room is now grey and filled with light. Stairs wind down the stone walls into blackness. ")
+        print ("But as you stand here, you here distinct whispering, almost as if something has been here before. You turn " +
+        "to look, but there is nothing behind you. How odd. ")
         print ("Directions: d")
     if room == 8:
         print ("Basement")
@@ -282,16 +284,16 @@ def MoveProc(move):
             move = input (": ")
     return dire
 
-def Movement(dor, values, room, dire, turncounter):
+def Movement(ri7, dor, values, room, dire, turncounter):
     r1 = [6, 3, 0, 2, 0, 0]
     r2 = [0, 1, 0, 0, 0, 0]
     r3 = [4, 0, 0, 1, 0, 0]
     r4 = [0, 5, 3, 0, 0, 0]
-    r5 = [0, 9, 0, 0, 0, 0]
+    r5 = [0, 9, 0, 4, 0, 0]
     r6 = [0, 0, 1, 0, 7, 8]
     r7 = [0, 0, 0, 0, 0, 6]
     r8 = [0, 0, 9, 0, 6, 0]
-    r9 = [0, 0, 10, 0, 0, 0]
+    r9 = [8, 0, 10, 0, 0, 0]
     r10 = [0, 0, 0, 0, 0, 0]
     rlist = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10]
     rnum = room - 1
@@ -326,6 +328,32 @@ def Movement(dor, values, room, dire, turncounter):
                     p = 1
             else:
                 p = 1
+        if room == 9:
+            if pos == 10:
+                bleach = ri7[0]
+                if bleach == 0:
+                    print ("Suddenly, everything goes ")
+                    print ("Quiet. ")
+                    print (" ")
+                    print ("A lone voice through the shadows - 'Please, please can you give us something?'")
+                    print ("'Something to do in our lonely isolation?'")
+                    print ("'We do love ever so much to play billiards...' ")
+                    print ("'Perhaps you could give us something to play with?'")
+                    print ("'Not much... Would you?'")
+                    print (" ")
+                    print ("The room gets colder somehow. ")
+                    print ("The voice deepens - 'Otherwise, we cannot let you pass.'")
+                    print ("You feel tiny hands pushing you back, back into the corridor. Whatever was beyond, is for now out of reach. ")
+                    turncounter = turncounter - 1
+                    print (" ")
+                    return room, pos, turncounter
+                else:
+                    print (" ")
+                    print ("'Thank you', the frail voice whispers. ")
+                    print ("From above, you hear the sound of laughter mixed with the clack of billiards long forgotten, and know that you have done well. ")
+                    print (" ")
+                    room = pos
+                    return room, pos, turncounter
         room = pos
         return room, pos, turncounter
         
@@ -462,7 +490,12 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
             if bur == 1:
                 print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
                 print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
+                bur = 2
                 ede = 1
+                return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
+            if bur == 2:
+                print ("Even though you touch the stone, it does not open anymore. ")
+                print ("Now, the only thing it's good for is as a billiard ball. ")
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         if obj == 1:
             print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
@@ -542,7 +575,7 @@ print (" ")
 lizt = ["small stone", "gilded envelope", "wooden key", "oak door"]
 t = Desc(room, ede, ba)
 while amplaying == True:
-    turncounterz = 20 - turncounter
+    turncounterz = 30 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
     print (" ")
     move = input (": ")
@@ -552,7 +585,7 @@ while amplaying == True:
     ent1 = movescript[0]
     if ent1 == "n" or ent1 == "s" or ent1 == "e" or ent1 == "w" or ent1 == "u" or ent1 == "d":
         dire = MoveProc(ent1)
-        room, pos, turncounter = Movement(dor, values, room, dire, turncounter)
+        room, pos, turncounter = Movement(ri7, dor, values, room, dire, turncounter)
         if pos == 0:
             j = 3
         else:
@@ -596,7 +629,7 @@ while amplaying == True:
         ri3[2] = 1
         ba = 1
         ede = 0
-    if turncounter == 20:
+    if turncounter == 30:
         print ("The easy part is looking. ")
         print ("It's hard enough to find. ")
         print ("Be skilled this time, my darling. ")
@@ -604,7 +637,7 @@ while amplaying == True:
         print (" ")
         amplaying = False
     if room == 10:
-        turncountere = 20 - turncounter
+        turncountere = 30 - turncounter
         print ("You've made it through your first test. Now, time for your second. ")
         print (" ")
         run = input ("Pick a class, preferably your strongest. 'h' for heroism, 'i' for intelligence, and 's' for spirit.")
@@ -661,21 +694,21 @@ while amplaying == True:
                     k = input ("Yes, the spirits have given up on you for sure. You give in to the hopelessness. ")
                     break
         if t == 0:
-            print (" ")
-            print ("The Void:")
-            print ("There is nothing here.")
-            print ("Directions: ")
-            print (" ")
-            print ("There are no choices left to make. You have disappointed me. ")
-            amplaying = False
+            p = Transition()
+            print ("You have disappointed me. ")
+            while True:
+                print (" ")
+                print ("The Void:")
+                print ("There is nothing here.")
+                print ("Directions: ")
+                print (" ")
+                k = input (": ")
         if t == 1:
             print (" ")
             print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
-            k = input ("As a token of my gratitude, I will give you a glimpse into this world. ")
-            print (" ")
-            p = Transition()
-            print (" ")
-            k = input ("Of course, now you can see it all, can't you? ")
+            print ("Soon, you will feel the padded chair beneath your feet, the keys under your fingers...")
+            print ("And now, it comes. ")
+            k = input ("Hit any key to wake up. ")
             amplaying = False
 print (" ")
 print (" ")
