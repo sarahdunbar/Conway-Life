@@ -293,7 +293,7 @@ def Movement(ri7, dor, values, room, dire, turncounter):
     r6 = [0, 0, 1, 0, 7, 8]
     r7 = [0, 0, 0, 0, 0, 6]
     r8 = [0, 0, 9, 0, 6, 0]
-    r9 = [8, 0, 10, 0, 0, 0]
+    r9 = [7, 0, 10, 0, 0, 0]
     r10 = [0, 0, 0, 0, 0, 0]
     rlist = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10]
     rnum = room - 1
@@ -672,7 +672,7 @@ while amplaying == True:
         while t == 0:
             if num == 0:
                 print ("Fear fogs your vision, and you can't see. You reach deep inside yourself to find some kind of courage... ")
-                if stat > 40: 
+                if stat > 30: 
                     k = input ("You conjure up the images of your triumphs, and wrap yourself in warmth.")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -682,7 +682,7 @@ while amplaying == True:
                     break
             if num == 1:
                 print ("As you fall, you feel panic beginning to overwhelm your intellect. You struggle to focus...")
-                if stat > 40: 
+                if stat > 30: 
                     k = input ("You breathe deeply, and your head begins to clear. It's so obvious now...")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -692,7 +692,7 @@ while amplaying == True:
                     break
             if num == 2:
                 print ("But... but this isn't possible... You feel your faith begin to fade...")
-                if stat > 40: 
+                if stat > 30: 
                     k = input ("But something is causing this, isn't it? It must have a plan in the end. You close your eyes and hope for the best. ")
                     p = Transition()
                     ("It's time to wake up now. ")
