@@ -293,7 +293,7 @@ def Movement(ri7, dor, values, room, dire, turncounter):
     r6 = [0, 0, 1, 0, 7, 8]
     r7 = [0, 0, 0, 0, 0, 6]
     r8 = [0, 0, 9, 0, 6, 0]
-    r9 = [7, 0, 10, 0, 0, 0]
+    r9 = [8, 0, 10, 0, 0, 0]
     r10 = [0, 0, 0, 0, 0, 0]
     rlist = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10]
     rnum = room - 1
