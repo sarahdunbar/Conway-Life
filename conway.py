@@ -251,7 +251,7 @@ def Desc(room, ede, ba):
         print ("Southern Corridor")
         print ("Somehow, you have stumbled upon a hidden corridor! The floor is "
         + "distinctly earthy, and you fear that the loose dirt ceiling will collapse on your head at any minute.")
-        print ("Directions: s")
+        print ("Directions: n, s")
     if room == 10:
         print ("Erdgeschoss Grounds")
         print ("Stumbling out of the passage, the first thing that you see is the brilliant light. " +
@@ -479,11 +479,11 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
         rlizzle = lizt[obj]
         if obj == 0 or obj == 1 or obj == 2:
             check = rim[obj]
-            if rim == 0:
-                print ("You are not holding a " + rlizzle + ".")
+            if check == 0:
+                print ("You are not holding a " + rlizzle + "!")
                 turncounter = turncounter - 1
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10    
-        if obj == 0:
+        elif obj == 0:
             if bur == 0:
                 print ("You palm the small stone gingerly in your hands. It feels like a normal rock.")
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
@@ -497,7 +497,7 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                 print ("Even though you touch the stone, it does not open anymore. ")
                 print ("Now, the only thing it's good for is as a billiard ball. ")
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-        if obj == 1:
+        elif obj == 1:
             print ("You try your best, but the envelope refuses to open... You must rely on your special skills!")
             her = values[0]
             intl = values[1]
@@ -517,12 +517,12 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
             bur = 1
             rim[1] = 0
             return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-        if obj == 2:
+        elif obj == 2:
             print ("The wooden key refuses to open. You know you're allowed to open doors, right?")
             turncounter = turncounter - 1
             print (" ")
             return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
-        if obj == 3:
+        elif obj == 3:
             if room == 4 or room == 1:
                 key = rim[2]
                 if key == 1:
@@ -551,7 +551,6 @@ ede = 0
 room = 1
 turncounter = 0
 ret = []
-rim = []
 dor = [0, 0]
 rim = [1, 0, 0]
 ri1 = [0, 0, 0]
@@ -575,10 +574,13 @@ print (" ")
 lizt = ["small stone", "gilded envelope", "wooden key", "oak door"]
 t = Desc(room, ede, ba)
 while amplaying == True:
-    turncounterz = 30 - turncounter
+    turncounterz = 20 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
     print (" ")
     move = input (": ")
+    print (" ")
+    print ("RESULT")
+    print (" ")
     move = move.lower()
     movescript = move.split(" ")
     movescript.append(" ")
@@ -629,7 +631,7 @@ while amplaying == True:
         ri3[2] = 1
         ba = 1
         ede = 0
-    if turncounter == 30:
+    if turncounter == 20:
         print ("The easy part is looking. ")
         print ("It's hard enough to find. ")
         print ("Be skilled this time, my darling. ")
@@ -637,7 +639,7 @@ while amplaying == True:
         print (" ")
         amplaying = False
     if room == 10:
-        turncountere = 30 - turncounter
+        turncountere = 20 - turncounter
         print ("You've made it through your first test. Now, time for your second. ")
         print (" ")
         run = input ("Pick a class, preferably your strongest. 'h' for heroism, 'i' for intelligence, and 's' for spirit.")
