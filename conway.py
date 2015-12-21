@@ -61,7 +61,7 @@ def Init():
             print (namre + " total: " + str(ent))
             num = num - ent
             if num < 0:
-                print ("Oh dear, you don't have enough energy points for that! Please select again! ")
+                print ("Oh dear, you don't have enough attribute points for that! Please select again! ")
                 print (" ")
                 num = num + ent
             else:
@@ -494,7 +494,7 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             if bur == 1:
                 print ("Following the instructions on the letter, you touch the top of the stone with your index finger and slide it open. A bright light! ")
-                print ("Words appear in the air in front of you... - 'Such a small, shallow crevice it once was...' ")
+                print ("Words appear in the air in front of you... - 'Such a small, shallow ditch it once was...' ")
                 bur = 2
                 ede = 1
                 return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
