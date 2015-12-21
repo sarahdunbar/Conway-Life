@@ -230,7 +230,7 @@ def Desc(room, ede, ba):
         print ("Mineshaft")
         print ("As you walk along the rusted tracks, you get the increasing feeling that you're walking in a circle. "
         + "But then, a light ahead!")
-        print ("Directions: e")
+        print ("Directions: w, e")
     if room == 6:
         print ("Atrium")
         print ("You are standing in the dark castle room known as the atrium. The only light comes from the stained " +
@@ -571,7 +571,7 @@ ri10 = [0, 0, 0]
 values = Init()
 t = Transition()
 print ("You have been here before. ")
-print ("You have 20 turns. ")
+print ("You have 40 turns. ")
 print ("Do not disappoint me. ")
 print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, open - open object")
@@ -579,7 +579,7 @@ print (" ")
 lizt = ["small stone", "gilded envelope", "wooden key", "oak door"]
 t = Desc(room, ede, ba)
 while amplaying == True:
-    turncounterz = 20 - turncounter
+    turncounterz = 40 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
     print (" ")
     move = input (": ")
@@ -636,15 +636,15 @@ while amplaying == True:
         ri3[2] = 1
         ba = 1
         ede = 0
-    if turncounter == 20:
+    if turncounter == 40:
         print ("The easy part is looking. ")
         print ("It's hard enough to find. ")
         print ("Be skilled this time, my darling. ")
-        print ("And do not disappoint me. ")
+        k = input ("And do not disappoint me. ")
         print (" ")
         amplaying = False
     if room == 10:
-        turncountere = 20 - turncounter
+        turncountere = 40 - turncounter
         print ("You've made it through your first test. Now, time for your second. ")
         print (" ")
         run = input ("Pick a class, preferably your strongest. 'h' for heroism, 'i' for intelligence, and 's' for spirit.")
@@ -672,7 +672,7 @@ while amplaying == True:
         while t == 0:
             if num == 0:
                 print ("Fear fogs your vision, and you can't see. You reach deep inside yourself to find some kind of courage... ")
-                if stat > 20: 
+                if stat > 40: 
                     k = input ("You conjure up the images of your triumphs, and wrap yourself in warmth.")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -682,7 +682,7 @@ while amplaying == True:
                     break
             if num == 1:
                 print ("As you fall, you feel panic beginning to overwhelm your intellect. You struggle to focus...")
-                if stat > 20: 
+                if stat > 40: 
                     k = input ("You breathe deeply, and your head begins to clear. It's so obvious now...")
                     p = Transition()
                     print ("It's time to wake up now. ")
@@ -692,7 +692,7 @@ while amplaying == True:
                     break
             if num == 2:
                 print ("But... but this isn't possible... You feel your faith begin to fade...")
-                if stat > 20: 
+                if stat > 40: 
                     k = input ("But something is causing this, isn't it? It must have a plan in the end. You close your eyes and hope for the best. ")
                     p = Transition()
                     ("It's time to wake up now. ")
