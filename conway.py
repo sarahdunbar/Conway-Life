@@ -349,8 +349,7 @@ def Movement(ri7, dor, values, room, dire, turncounter):
                     return room, pos, turncounter
                 else:
                     print (" ")
-                    print ("'Thank you', the frail voice whispers. ")
-                    print ("From above, you hear the sound of laughter mixed with the clack of billiards long forgotten, and know that you have done well. ")
+                    print ("The air gives way before you, and you step into the light. ")
                     print (" ")
                     room = pos
                     return room, pos, turncounter
@@ -452,10 +451,16 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
             rlizzle[obj] = 1
             rim[obj] = 0
             print ("You are no longer holding a " + namer + ".")
+            if room == 7 and obj == 0:
+                print ("To your surprise, the rock rolls across the seemingly smooth floor and disappears. To your left, you hear laughter, and a small child's voice.")
+                print ("'Thank you.'")
         if jj == 2:
             rim[obj] = 1
             rlizzle[obj] = 0
             print ("You have picked up the " + namer + ".")
+            if room == 7 and obj == 0:
+                print ("The voices fade, and the room suddenly gets colder. The air feels denser somehow, as if you have disappointed it. ")
+                print ("Your hands suddenly feel wet, as if with ghostly tears. You try to wipe them on your cloak, but the feeling remains. ")
         print (" ")
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
         
