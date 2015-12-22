@@ -339,10 +339,9 @@ def Movement(ri7, dor, values, room, dire, turncounter):
                     print (" ")
                     print ("A lone voice through the shadows - 'Please, please can you give us something?'")
                     print ("'Something to do in our lonely isolation?'")
-                    print ("'We do love ever so much to play billiards...' "
+                    print ("'We do love ever so much to play billiards...' ")
                     print ("'Well, not as much as we wish we did, but we are with few options now that we have been trapped.'")
-                    print ("'Our table is empty, and we are alone.'")
-                    print ("'Perhaps you could give us something to play with?'")
+                    print ("'But perhaps you could give us something to play with?'")
                     print ("The voice deepens - 'Otherwise, we cannot let you pass.'")
                     print ("You feel tiny hands pushing you back, back into the corridor. Whatever was beyond, is for now out of reach. ")
                     turncounter = turncounter - 1
