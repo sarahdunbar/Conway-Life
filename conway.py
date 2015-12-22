@@ -642,34 +642,39 @@ while amplaying == True:
         ede = 0
     if turncounter == 40:
         print ("The easy part is looking. ")
-        print ("It's hard enough to find. ")
-        print ("Be skilled this time, my darling. ")
-        k = input ("And do not disappoint me. ")
+        k == input ("It's hard enough to find. ")
         print (" ")
         amplaying = False
     if room == 10:
         turncountere = 40 - turncounter
-        print ("You've made it through your first test. Now, time for your second. ")
         print (" ")
-        run = input ("Pick a class, preferably your strongest. 'h' for heroism, 'i' for intelligence, and 's' for spirit.")
-        run.lower
         while True:
-            if run == "h":
+            run = input (": ")
+            if run == "n" or run == "s" or run == "e" or run == "w":
+                dd = "h"
+                break
+            elif run == "i" or run == "l":
+                dd == "i"
+                break
+            elif run == "drop" or run == "grab" or run == "open":
+                dd == "s"
+                break
+            else:
+                print ("Invalid command. ")
+                print (" ")
+        while True:
+            if dd == "h":
                 stat = turncountere + values[0]
                 num = 0
                 break
-            elif run == "i":
+            if dd == "i":
                 stat = turncountere + values[1]
                 num = 1
                 break
-            elif run == "s":
+            if dd == "s":
                 stat = turncountere + values[2]
                 num = 2
                 break
-            else:
-                print (" ")
-                print ("I could not understand you. Again, again, and with haste! ")
-                run = input(": ")
         print (" ")
         print ("Suddenly, the ground falls away beneath your feet and you're falling... falling... ")
         t = 0
@@ -677,29 +682,29 @@ while amplaying == True:
             if num == 0:
                 print ("Fear fogs your vision, and you can't see. You reach deep inside yourself to find some kind of courage... ")
                 if stat > 30: 
-                    k = input ("You conjure up the images of your triumphs, and wrap yourself in warmth.")
+                    k = input ("You conjure up the images of your triumphs, and feel brave once again. ")
                     p = Transition()
-                    print ("It's time to wake up now. ")
+                    print ("A voice: 'It's time to wake up now.' ")
                     t = 1
                 else:
-                    k = input ("But it's too much. You give in to the terror. ")    
+                    k = input ("... but it's all too much. You give in to the terror. ")    
                     break
             if num == 1:
                 print ("As you fall, you feel panic beginning to overwhelm your intellect. You struggle to focus...")
                 if stat > 30: 
                     k = input ("You breathe deeply, and your head begins to clear. It's so obvious now...")
                     p = Transition()
-                    print ("It's time to wake up now. ")
+                    print ("A voice: 'It's time to wake up now.' ")
                     t = 1
                 else:
-                    k = input ("But you just can't focus. Already, you feel yourself giving in. ")
+                    k = input ("... but you just can't focus. Already, you feel yourself giving in. ")
                     break
             if num == 2:
                 print ("But... but this isn't possible... You feel your faith begin to fade...")
                 if stat > 30: 
                     k = input ("But something is causing this, isn't it? It must have a plan in the end. You close your eyes and hope for the best. ")
                     p = Transition()
-                    ("It's time to wake up now. ")
+                    ("A voice: 'It's time to wake up now.' ")
                     t = 1
                 else: 
                     k = input ("Yes, the spirits have given up on you for sure. You give in to the hopelessness. ")
@@ -707,13 +712,16 @@ while amplaying == True:
         if t == 0:
             p = Transition()
             print ("You have disappointed me. ")
-            while True:
+            while r == 0:
                 print (" ")
                 print ("The Void:")
                 print ("There is nothing here.")
-                print ("Directions: ")
+                print ("Directions: The only one left. ")
                 print (" ")
                 k = input (": ")
+                if k == "u":
+                    break
+            amplaying = False
         if t == 1:
             print (" ")
             print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
