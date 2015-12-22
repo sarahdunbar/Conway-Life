@@ -195,7 +195,7 @@ def Transition():
     print (" ")
     print (" ")
     
-def Desc(room, ede, ba):
+def Desc(room, ede, ba, ri7):
     if room == 1:
         print ("Courtyard Proper")
         print ("You are standing outside a spindly northern tower with a stained glass door. Around you, "
@@ -238,9 +238,13 @@ def Desc(room, ede, ba):
         print ("Directions: u, d, s")
     if room == 7:
         print ("Billiard Room")
-        print ("What was once the billiard room is now grey and filled with light. Stairs wind down the stone walls into blackness. ")
-        print ("But as you stand here, you here distinct whispering, almost as if something has been here before. You turn " +
-        "to look, but there is nothing behind you. How odd. ")
+        if ri7[0] == 0:
+            print ("What was once the billiard room is now a misty, impenetrable grey. The only piece of furniture is a withered old pool table in the corner. Stairs wind down the stone walls into blackness. ")
+            print ("But as you stand here, you here distinct whispering, almost as if something has been here before. You turn " +
+            "to look, but there is nothing behind you. How odd. ")
+        if ri7[0] == 1:
+            print ("What once was a billiard room is now grey and filled with light. The only piece of furniture is a table, upon which rests a single stone." + 
+            " When you turn away, the stone almost appears to be moving. How odd. ")
         print ("Directions: d")
     if room == 8:
         print ("Basement")
@@ -249,7 +253,7 @@ def Desc(room, ede, ba):
         print ("Directions: u, ?")
     if room == 9:
         print ("Southern Corridor")
-        print ("Somehow, you have stumbled upon a hidden corridor! The floor is "
+        print ("The floor is "
         + "distinctly earthy, and you fear that the loose dirt ceiling will collapse on your head at any minute.")
         print ("Directions: n, s")
     if room == 10:
@@ -310,7 +314,6 @@ def Movement(ri7, dor, values, room, dire, turncounter):
                 if doc == 0:
                     print ("The door is locked! ")
                     turncounter = turncounter - 1
-                    print (" ")
                     return room, pos, turncounter
                 else:
                     p = 1
@@ -322,7 +325,6 @@ def Movement(ri7, dor, values, room, dire, turncounter):
                 if doc == 0:
                     print ("The door is locked! ")
                     turncounter = turncounter - 1
-                    print (" ")
                     return room, pos, turncounter
                 else:
                     p = 1
@@ -337,11 +339,10 @@ def Movement(ri7, dor, values, room, dire, turncounter):
                     print (" ")
                     print ("A lone voice through the shadows - 'Please, please can you give us something?'")
                     print ("'Something to do in our lonely isolation?'")
-                    print ("'We do love ever so much to play billiards...' ")
+                    print ("'We do love ever so much to play billiards...' "
+                    print ("'Well, not as much as we wish we did, but we are with few options now that we have been trapped.'")
+                    print ("'Our table is empty, and we are alone.'")
                     print ("'Perhaps you could give us something to play with?'")
-                    print ("'Not much... Would you?'")
-                    print (" ")
-                    print ("The room gets colder somehow. ")
                     print ("The voice deepens - 'Otherwise, we cannot let you pass.'")
                     print ("You feel tiny hands pushing you back, back into the corridor. Whatever was beyond, is for now out of reach. ")
                     turncounter = turncounter - 1
@@ -452,7 +453,7 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
             rim[obj] = 0
             print ("You are no longer holding a " + namer + ".")
             if room == 7 and obj == 0:
-                print ("To your surprise, the rock rolls across the seemingly smooth floor and disappears. To your left, you hear laughter, and a small child's voice.")
+                print ("As you place the stone on the table, the room suddenly feels lighter. Sunlight streams through the windows, illuminating the walls, the floors. To your left, you hear what sounds like a child's voice.")
                 print ("'Thank you.'")
         if jj == 2:
             rim[obj] = 1
@@ -545,7 +546,6 @@ def openi (dor, bur, turncounter, values, lizt, movescript, room, rim, ri1, ri2,
                     return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
                 else:
                     print ("The door is locked! ")
-                    print (" ")
                     turncounter = turncounter - 1
                     return dor, bur, ba, ede, turncounter, values, lizt, movescript, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
             else:
@@ -582,7 +582,7 @@ print (" ")
 print ("Controls: n - north, s - south, e - east, w - west, u - up, d - down, i - inventory, l - look, drop - drop object, grab - pick up object, open - open object")
 print (" ")
 lizt = ["small stone", "gilded envelope", "wooden key", "oak door"]
-t = Desc(room, ede, ba)
+t = Desc(room, ede, ba, ri7)
 while amplaying == True:
     turncounterz = 40 - turncounter
     print ("Turns Remaining: " + str(turncounterz))
@@ -601,13 +601,13 @@ while amplaying == True:
         if pos == 0:
             j = 3
         else:
-            t = Desc(room, ede, ba)
+            t = Desc(room, ede, ba, ri7)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
         turncounter = turncounter + 1
     elif ent1 == "i":
         rim = selfinv(lizt, rim)
     elif ent1 == "l" or ent1 == "look":
-        t = Desc(room, ede, ba)
+        t = Desc(room, ede, ba, ri7)
         ret, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10 = inventory(lizt, room, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10)
     elif ent1 == "drop" or ent1 == "grab":
         if ent1 == "drop":
