@@ -443,7 +443,7 @@ def dropfunc(turncounter, word, jj, lizt, movescript, room, rim, ri1, ri2, ri3, 
         if jj == 2:
             print ("That object is not in this room! ")
         print (" ")
-        turncounter = turncounter - 1  
+        turncounter = turncounter - 1 0 
         return turncounter, rim, ri1, ri2, ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10
     if check == 1:
         namer = lizt[obj]
