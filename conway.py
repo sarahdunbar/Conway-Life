@@ -646,6 +646,7 @@ while amplaying == True:
         print (" ")
         amplaying = False
     if room == 10:
+        r = 6
         turncountere = 40 - turncounter
         print (" ")
         while True:
@@ -654,27 +655,23 @@ while amplaying == True:
                 dd = "h"
                 break
             elif run == "i" or run == "l":
-                dd == "i"
+                dd = "i"
                 break
             elif run == "drop" or run == "grab" or run == "open":
-                dd == "s"
+                dd = "s"
                 break
             else:
                 print ("Invalid command. ")
                 print (" ")
-        while True:
-            if dd == "h":
-                stat = turncountere + values[0]
-                num = 0
-                break
-            if dd == "i":
-                stat = turncountere + values[1]
-                num = 1
-                break
-            if dd == "s":
-                stat = turncountere + values[2]
-                num = 2
-                break
+        if dd == "h":
+            stat = turncountere + values[0]
+            num = 0
+        if dd == "i":
+            stat = turncountere + values[1]
+            num = 1
+        if dd == "s":
+            stat = turncountere + values[2]
+            num = 2
         print (" ")
         print ("Suddenly, the ground falls away beneath your feet and you're falling... falling... ")
         t = 0
@@ -725,7 +722,7 @@ while amplaying == True:
         if t == 1:
             print (" ")
             print ("It seems as though you are in fact worthy. Before you wake, know that you have not disappointed me. ")
-            print ("Soon, you will feel the padded chair beneath your feet, the keys under your fingers...")
+            print ("You feel the padded chair beneath your feet, the keys under your fingers...")
             print ("And now, it comes. ")
             k = input ("Hit any key to wake up. ")
             amplaying = False
